@@ -35,12 +35,6 @@ const Navbar = () => {
   return (
     <>
       <div className="sticky-top">
-        <div
-          className="py-1 text-center"
-          style={{ fontFamily: "cursive", background: "#f7f3e6" }}
-        >
-          10% off on your first purchase
-        </div>
         <nav
           className="navbar navbar-expand-lg"
           style={{ background: "#00061a", fontFamily: "Serif" }}

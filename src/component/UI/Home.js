@@ -20,11 +20,11 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="" style={{ background: "#f7f3e6" }}>
+      <div className="bg-light">
         <Advertisementpic pic={pic} pic1={pic1} pic2={pic2} />
-        <Categories header={"CATEGORIES YOU CAN EXPLORE"} data={Category} />
-        <Footar />
+        <Categories header={"Shop by Category"} data={Category} />
       </div>
+        <Footar />
     </>
   );
 };

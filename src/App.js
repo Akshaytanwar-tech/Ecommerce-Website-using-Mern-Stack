@@ -15,7 +15,7 @@ import DeleteCategory from "./component/Admin/DeleteCategory";
 import DeleteProduct from "./component/Admin/DeleteProduct";
 import Cart from "./component/UI/Cart";
 import Myprofile from "./component/UI/user/Myprofile";
-import ProductSearch from "./component/UI/ProductSearch";
+import ProductSearch from "./component/UI/Product/ProductSearch";
 import VerifydetailsFP from "./component/UI/user/VerifydetailsFP";
 import NewPassword from "./component/UI/user/NewPassword";
 import Changepassword from "./component/UI/user/Changepassword";
@@ -24,7 +24,7 @@ import Order from "./component/checkout/Order";
 import Alert from "./component/UI/Alert";
 import Success from "./component/checkout/StripePayment/Success";
 import Cancel from "./component/checkout/StripePayment/Cancel";
-
+import Homepage from "./component/Seller/Homepage";
 function App() {
   return (
     <>
@@ -92,6 +92,7 @@ function App() {
             <Route path="/alert" element={<Alert />} />
             <Route path="/Ordersuccess" element={<Success />} />
             <Route path="/Ordercancel" element={<Cancel />} />
+            <Route path="/seller/Homepage" element={<Homepage />} />
           </Routes>
         </BrowserRouter>
       </EcomContext>
