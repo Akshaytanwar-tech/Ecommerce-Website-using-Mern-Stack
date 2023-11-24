@@ -1,529 +1,227 @@
 import React from "react";
-import "./BestSeller.css";
+// import "./style.css";
+
 const BestSeller = () => {
   return (
     <>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>
-              Shop Our <b>Best Sellers</b>
-            </h2>
-            <div
-              id="myCarousel"
-              class="carousel slide"
-              data-ride="carousel"
-              data-interval="0"
-            >
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/ipad.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Apple iPad</h4>
-                          <p class="item-price">
-                            <strike>$400.00</strike> <span>$369.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/headphone.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Sony Headphone</h4>
-                          <p class="item-price">
-                            <strike>$25.00</strike> <span>$23.99</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/macbook-air.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Macbook Air</h4>
-                          <p class="item-price">
-                            <strike>$899.00</strike> <span>$649.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-half-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/nikon.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Nikon DSLR</h4>
-                          <p class="item-price">
-                            <strike>$315.00</strike> <span>$250.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/play-station.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Sony Play Station</h4>
-                          <p class="item-price">
-                            <strike>$289.00</strike> <span>$269.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/macbook-pro.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Macbook Pro</h4>
-                          <p class="item-price">
-                            <strike>$1099.00</strike> <span>$869.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-half-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/speaker.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Bose Speaker</h4>
-                          <p class="item-price">
-                            <strike>$109.00</strike> <span>$99.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/galaxy.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Samsung Galaxy S8</h4>
-                          <p class="item-price">
-                            <strike>$599.00</strike> <span>$569.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/iphone.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Apple iPhone</h4>
-                          <p class="item-price">
-                            <strike>$369.00</strike> <span>$349.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/canon.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Canon DSLR</h4>
-                          <p class="item-price">
-                            <strike>$315.00</strike> <span>$250.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/pixel.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Google Pixel</h4>
-                          <p class="item-price">
-                            <strike>$450.00</strike> <span>$418.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="/examples/images/products/watch.jpg"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Apple Watch</h4>
-                          <p class="item-price">
-                            <strike>$350.00</strike> <span>$330.00</span>
-                          </p>
-                          <div class="star-rating">
-                            <ul class="list-inline">
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li class="list-inline-item">
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <a href="#" class="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div className="container h1 text-center my-2">Our Best Products</div>
+      <div
+        id="carouselExampleAutoplaying"
+        class="carousel slide border container"
+        data-bs-ride="carousel"
+      >
+        <div
+          class="container carousel-inner"
+          style={{
+            maxHeight: "250px",
+            maxWidth: "780px",
+          }}
+        >
+          <div class="carousel-item active">
+            <div className="container d-flex mt-4">
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
               </div>
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel"
-                data-slide="prev"
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
               >
-                <i class="fa fa-angle-left"></i>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel"
-                data-slide="next"
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
               >
-                <i class="fa fa-angle-right"></i>
-              </a>
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div className="container d-flex mt-4">
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div className="container d-flex mt-4">
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <div className="card-body text-center">fsadfhjsd</div>
+              </div>
+              <div
+                className="card border-0 p-2 bg-transparent"
+                style={{ width: "14rem" }}
+              >
+                <img
+                  src={
+                    "https://images.unsplash.com/photo-1566275529824-cca6d008f3da?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG98ZW58MHx8MHx8fDA%3D"
+                  }
+                  className="card-img-top"
+                  alt="..."
+                  style={{ height: "10rem" }}
+                />
+                <a
+                  href="https://www.google.com/finance/quote/NIFTY_50:INDEXNSE"
+                  className="card-body text-center"
+                >
+                  fsadfhjsd
+                </a>
+              </div>
             </div>
           </div>
         </div>
+
+        <button
+          class="carousel-control-prev bg-dark"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next bg-dark"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </>
   );
