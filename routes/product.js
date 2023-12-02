@@ -29,6 +29,7 @@ router.post(
       ProductHighlight,
       specifications,
       Description_spec,
+      isBest,
     } = req.body;
 
     const errors = validationResult(req);
@@ -49,6 +50,7 @@ router.post(
       ProductHighlight: ProductHighlight,
       specifications: specifications,
       Description_spec: Description_spec,
+      isBest: isBest,
     });
 
     res.json(`${product.Product_Name} has been created`);

@@ -1,8 +1,10 @@
-// Schema for the product CRUD operations.
+// Schema for the product CRUD.
+
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const ProductSchema = new Schema({
+
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
@@ -13,18 +15,22 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+
   Product_Name: {
     type: String,
     required: true,
   },
+
   Product_Name_Details: {
     type: String,
     required: true,
   },
+
   Description: {
     type: String,
     required: true,
   },
+
   Description_spec: [
     {
       Description_spec_title: {
@@ -46,21 +52,33 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+
   price: {
     type: Number,
     required: true,
   },
+
   quantity: {
     type: Number,
     required: true,
   },
+
   tags: {
     type: String,
   },
+
   ProductHighlight: {
     type: Array,
   },
+
   specifications: {},
+
+  isBest: {
+    type: Boolean,
+    default: false,
+  },
+
 });
+
 const Product = mongoose.model("Product", ProductSchema);
 module.exports = Product;
