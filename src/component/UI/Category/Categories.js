@@ -7,7 +7,7 @@ const Categories = (props) => {
       <div className="h1 my-4 text-center" style={{ fontFamily: "Cursive" }}>
         {props.header}
       </div>
-      <div className="container">
+      <div className="container border border-white bg-white">
         <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
           {props.data.map((element) => {
             return (

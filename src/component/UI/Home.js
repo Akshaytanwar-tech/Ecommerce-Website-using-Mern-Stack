@@ -24,7 +24,7 @@ const Home = () => {
       <div className="bg-light">
         <Advertisementpic pic={pic} pic1={pic1} pic2={pic2} />
         <Categories header={"Shop by Categories"} data={Category} />
-        <BestSeller />
+        <BestSeller Category={Category} />
       </div>
       <Footar />
     </>

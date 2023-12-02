@@ -6,8 +6,10 @@ const CreateProduct = () => {
   const context = useContext(EcomContext);
   const { FetchCategories, Category, CreateProduct } = context;
 
-  //State to handle Alert
+  // State to handle Alert.
   const [AlertTriggered, setAlertTriggered] = useState("");
+  // State for handle checkbox.
+  const [isBestProduct, setisBestProduct] = useState(false);
   const select = useRef();
 
   useEffect(() => {
@@ -49,6 +51,17 @@ const CreateProduct = () => {
     setProduct({ ...Product, [e.target.name]: e.target.value });
   };
 
+  //on change for the checkbox of the best product
+  const HandleisBestonChange = (e) => {
+    if (isBestProduct) {
+      setisBestProduct(false);
+      console.log(isBestProduct);
+    } else {
+      setisBestProduct(true);
+      console.log(isBestProduct);
+    }
+  };
+
   // Submit function for the full form
   const onSubmit = (e) => {
     e.preventDefault();
@@ -63,7 +76,8 @@ const CreateProduct = () => {
       Product.category,
       Product.tags,
       AddDes,
-      AddProductHighlight
+      AddProductHighlight,
+      isBestProduct
     )
       .then((json) => {
         setAlertTriggered(json);
@@ -388,6 +402,19 @@ const CreateProduct = () => {
             value={Product.tags}
             required
           />
+        </div>
+
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value={isBestProduct}
+            id="flexCheckDefault"
+            onChange={HandleisBestonChange}
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            isBestProduct
+          </label>
         </div>
 
         <button
