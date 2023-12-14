@@ -120,8 +120,10 @@ const Ecomstate = (props) => {
     CategoryID,
     tags,
     Description_spec,
-    ProductHighlight
+    ProductHighlight,
+    isBestProduct
   ) => {
+    console.log(isBestProduct);
     const response = await fetch(
       `http://localhost:5000/api/Product/Productcreate`,
       {
@@ -141,9 +143,11 @@ const Ecomstate = (props) => {
           tags: tags,
           Description_spec: Description_spec,
           ProductHighlight: ProductHighlight,
+          isBest: isBestProduct,
         }),
       }
     );
+ 
     const json = response.json();
     return json;
   };

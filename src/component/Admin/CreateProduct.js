@@ -8,8 +8,8 @@ const CreateProduct = () => {
 
   // State to handle Alert.
   const [AlertTriggered, setAlertTriggered] = useState("");
-  // State for handle checkbox.
-  const [isBestProduct, setisBestProduct] = useState(false);
+  // State to manage best product list
+  const [isBest, setisBest] = useState(false);
   const select = useRef();
 
   useEffect(() => {
@@ -51,17 +51,6 @@ const CreateProduct = () => {
     setProduct({ ...Product, [e.target.name]: e.target.value });
   };
 
-  //on change for the checkbox of the best product
-  const HandleisBestonChange = (e) => {
-    if (isBestProduct) {
-      setisBestProduct(false);
-      console.log(isBestProduct);
-    } else {
-      setisBestProduct(true);
-      console.log(isBestProduct);
-    }
-  };
-
   // Submit function for the full form
   const onSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +66,7 @@ const CreateProduct = () => {
       Product.tags,
       AddDes,
       AddProductHighlight,
-      isBestProduct
+      isBest
     )
       .then((json) => {
         setAlertTriggered(json);
@@ -98,6 +87,7 @@ const CreateProduct = () => {
       category: (select.current.value = ""),
       tags: "",
     });
+    setisBest(false);
     SetAddDes([]);
     setAddProductHighlight([]);
   };
@@ -139,6 +129,18 @@ const CreateProduct = () => {
     setProductHighlight({ Highlight: "" });
   };
 
+  // Function to handle the checkbox for the best product
+
+  const handleBestProductCheckbox = (e) => {
+    console.log(e.target.checked);
+    if (e.target.checked) {
+      setisBest(!isBest);
+      console.log(isBest);
+    } else {
+      setisBest(!isBest);
+      console.log(isBest);
+    }
+  };
   return (
     <>
       {AlertTriggered && <Alert message={AlertTriggered} />}
@@ -408,15 +410,15 @@ const CreateProduct = () => {
           <input
             class="form-check-input"
             type="checkbox"
-            value={isBestProduct}
-            id="flexCheckDefault"
-            onChange={HandleisBestonChange}
+            value=""
+            id="flexCheckChecked"
+            onClick={handleBestProductCheckbox}
+            checked={isBest ? true : false}
           />
-          <label class="form-check-label" for="flexCheckDefault">
-            isBestProduct
+          <label class="form-check-label" for="flexCheckChecked">
+            Checked checkbox
           </label>
         </div>
-
         <button
           type="submit"
           value="submit"

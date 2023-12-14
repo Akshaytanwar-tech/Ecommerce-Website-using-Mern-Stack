@@ -19,9 +19,7 @@ const BestSeller = (props) => {
                 return (
                   <div className="mx-3 my-4 border">
                     <img
-                      src={
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq70AvDs-OIZrlcU0kAqvObihT8VhvedCurSyXCDCakQ&s"
-                      }
+                      src={e.photo}
                       alt=""
                       style={{ height: "100px", width: "130px" }}
                     />
@@ -41,9 +39,7 @@ const BestSeller = (props) => {
                 return (
                   <div className="my-4 mx-3 border">
                     <img
-                      src={
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq70AvDs-OIZrlcU0kAqvObihT8VhvedCurSyXCDCakQ&s"
-                      }
+                      src={e.photo}
                       alt=""
                       style={{ height: "100px", width: "130px" }}
                     />
