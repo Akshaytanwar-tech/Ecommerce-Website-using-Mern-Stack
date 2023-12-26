@@ -33,34 +33,38 @@ router.post(
       return res.status(400).json({ errors: error.array() });
     }
 
-    let user = await User.findOne({ email: req.body.email });
-    if (user) {
-      success = false;
-      return res.status(400).json({ error: "sorry user is already exists" });
+    try {
+      let user = await User.findOne({ email: req.body.email });
+      if (user) {
+        success = false;
+        return res.status(400).json({ error: "sorry user is already exists" });
+      }
+      // Creating hash and salt
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(password, salt);
+
+      user = await User.create({
+        username: username,
+        email: email,
+        password: hash,
+        photo: photo,
+        address: address,
+        mobile: mobile,
+      });
+
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+
+      // Creating token using jwt token
+      const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
+      success = true;
+      res.json({ token, success });
+    } catch (error) {
+      console.log(error);
     }
-    // Creating hash and salt
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
-
-    user = await User.create({
-      username: username,
-      email: email,
-      password: hash,
-      photo: photo,
-      address: address,
-      mobile: mobile,
-    });
-
-    const data = {
-      user: {
-        id: user.id,
-      },
-    };
-
-    // Creating token using jwt token
-    const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
-    success = true;
-    res.json({ token, success });
   }
 );
 
@@ -86,147 +90,176 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    try {
+      //Check wheather the email already exists or not
+      let user = await User.findOne({ email });
+      if (!user) {
+        success = false;
+        return res.status(400).json({ error: "sorry user not  exists" });
+      }
+      // Using Bcrypt compare the password given by the user and saved password hash
+      let passwordCompare = await bcrypt.compare(password, user.password);
+      if (!passwordCompare) {
+        success = false;
+        return res.status(400).json({ error: "Wrong password" });
+      }
 
-    //Check wheather the email already exists or not
-    let user = await User.findOne({ email });
-    if (!user) {
-      success = false;
-      return res.status(400).json({ error: "sorry user not  exists" });
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
+      success = true;
+      res.json({ token, success });
+    } catch (error) {
+      console.log(error);
     }
-    // Using Bcrypt compare the password given by the user and saved password hash
-    let passwordCompare = await bcrypt.compare(password, user.password);
-    if (!passwordCompare) {
-      success = false;
-      return res.status(400).json({ error: "Wrong password" });
-    }
-
-    const data = {
-      user: {
-        id: user.id,
-      },
-    };
-    const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
-    success = true;
-    res.json({ token, success });
   }
 );
 
 // Api-3:- for fetch the data of a particular user.
 
 router.get("/fetchuser", fetchuser, async (req, res) => {
-  //userId is coming from the middleware called fetchuser
-  const user = await User.findById(userID).select("-password");
-  res.json(user);
+  try {
+    //userId is coming from the middleware called fetchuser
+    const user = await User.findById(userID).select("-password");
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //  API 4:- To find total number of user
 
 router.get("/alluser", async (req, res) => {
-  const users = await User.find();
-  res.json(users);
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //  API 5:- To Forgot Password
 
 router.post("/VerifydetailsForgotPassword", async (req, res) => {
-  const { username, email, mobile } = req.body;
+  try {
+    const { username, email, mobile } = req.body;
 
-  const user = await User.findOne({ email: email });
-  if (!user) {
-    success = false;
-    return res
-      .status(400)
-      .json({ success, error: "sorry user does not found" });
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      success = false;
+      return res
+        .status(400)
+        .json({ success, error: "sorry user does not found" });
+    }
+    if (user.username !== username) {
+      success = false;
+      return res
+        .status(400)
+        .json({ success, error: "sorry username not matched" });
+    }
+    if (user.email !== email) {
+      success = false;
+      return res
+        .status(400)
+        .json({ success, error: "sorry email not matched" });
+    }
+    if (user.mobile !== mobile) {
+      success = false;
+      return res
+        .status(400)
+        .json({ success, error: "sorry mobile number is not matched" });
+    }
+    id = user._id;
+    success = true;
+    res.json({ success, id });
+  } catch (error) {
+    console.log(error);
   }
-  if (user.username !== username) {
-    success = false;
-    return res
-      .status(400)
-      .json({ success, error: "sorry username not matched" });
-  }
-  if (user.email !== email) {
-    success = false;
-    return res.status(400).json({ success, error: "sorry email not matched" });
-  }
-  if (user.mobile !== mobile) {
-    success = false;
-    return res
-      .status(400)
-      .json({ success, error: "sorry mobile number is not matched" });
-  }
-  id = user._id;
-  success = true;
-  res.json({ success, id });
 });
 
 // API 6:- To set new password.
 
 router.put("/newpassword/:id", async (req, res) => {
-  const { newPassword, confirmPassword } = req.body;
+  try {
+    const { newPassword, confirmPassword } = req.body;
 
-  if (newPassword !== confirmPassword) {
-    success = false;
-    return res
-      .status(400)
-      .json({ success, error: "Make sure both the password are same" });
+    if (newPassword !== confirmPassword) {
+      success = false;
+      return res
+        .status(400)
+        .json({ success, error: "Make sure both the password are same" });
+    }
+    const salt = await bcrypt.genSaltSync(10);
+    const hash = await bcrypt.hashSync(newPassword, salt);
+    await User.findByIdAndUpdate(req.params.id, { password: hash });
+    success = true;
+    res.json({ success });
+  } catch (error) {
+    console.log(error);
   }
-  const salt = await bcrypt.genSaltSync(10);
-  const hash = await bcrypt.hashSync(newPassword, salt);
-  await User.findByIdAndUpdate(req.params.id, { password: hash });
-  success = true;
-  res.json({ success });
 });
 
 // API 7:- to Change password.
 
 router.put("/changepassword", fetchuser, async (req, res) => {
-  const { password, newPassword, confirmPassword } = req.body;
-  const user = await User.findById(userID);
-  const hashedpassword = user.password;
+  try {
+    const { password, newPassword, confirmPassword } = req.body;
+    const user = await User.findById(userID);
+    const hashedpassword = user.password;
 
-  const result = await bcrypt.compareSync(password, hashedpassword);
-  console.log(result);
-  if (!result) {
-    success = false;
-    return res.status(400).json({ success, error: "Wrong Password" });
-  }
-  if (newPassword !== confirmPassword) {
-    success = false;
-    return res
-      .status(400)
-      .json({ success, error: "Make sure both the password" });
-  }
+    const result = await bcrypt.compareSync(password, hashedpassword);
+    console.log(result);
+    if (!result) {
+      success = false;
+      return res.status(400).json({ success, error: "Wrong Password" });
+    }
+    if (newPassword !== confirmPassword) {
+      success = false;
+      return res
+        .status(400)
+        .json({ success, error: "Make sure both the password" });
+    }
 
-  const salt = await bcrypt.genSaltSync(10);
-  const hash = await bcrypt.hashSync(newPassword, salt);
-  await User.findByIdAndUpdate(userID, { password: hash });
-  success = true;
-  res.json({ success });
+    const salt = await bcrypt.genSaltSync(10);
+    const hash = await bcrypt.hashSync(newPassword, salt);
+    await User.findByIdAndUpdate(userID, { password: hash });
+    success = true;
+    res.json({ success });
+  } catch (error) {
+    console.log(error);
+  }
 });
 module.exports = router;
 
 //Api - 8 :- To Edit the profile section
 
 router.put("/editprofile", fetchuser, async (req, res) => {
-  const { username, email, photo, address, mobile } = req.body;
-  let user = await User.findById(userID);
-  const NewUser = {};
-  if (username) {
-    NewUser.username = username;
-  }
-  if (email) {
-    NewUser.email = email;
-  }
-  if (photo) {
-    NewUser.photo = photo;
-  }
-  if (address) {
-    NewUser.address = address;
-  }
-  if (mobile) {
-    NewUser.mobile = mobile;
-  }
+  try {
+    const { username, email, photo, address, mobile } = req.body;
+    let user = await User.findById(userID);
+    const NewUser = {};
+    if (username) {
+      NewUser.username = username;
+    }
+    if (email) {
+      NewUser.email = email;
+    }
+    if (photo) {
+      NewUser.photo = photo;
+    }
+    if (address) {
+      NewUser.address = address;
+    }
+    if (mobile) {
+      NewUser.mobile = mobile;
+    }
 
-  user = await User.findByIdAndUpdate(user._id, { $set: NewUser });
-  res.json(user);
+    user = await User.findByIdAndUpdate(user._id, { $set: NewUser });
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+  }
 });
