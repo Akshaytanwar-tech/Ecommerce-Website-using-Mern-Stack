@@ -13,6 +13,7 @@ const Ecomstate = (props) => {
   const [UserData, setUserData] = useState([]);
   const [SearchData, setSearchData] = useState([]);
   const [myOrders, setmyOrders] = useState([]);
+  const [BestProducts, setBestProducts] = useState([]);
 
   // ---------------------------------------- APIs for the Category ------------------------------------ //
 
@@ -93,6 +94,22 @@ const Ecomstate = (props) => {
     setSearchData(json);
   };
 
+  //Api:- 4 :- api for the best product
+
+  const BestProduct = async () => {
+    const response = await fetch(
+      `http://localhost:5000/api/Product/isBest`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const json = await response.json();
+    // console.log(json)
+    setBestProducts(json);
+  };
   //------------------------------------------- APIs for the Admin -------------------------------------------------//
 
   // Api:- 1 To create the Category
@@ -526,6 +543,8 @@ const Ecomstate = (props) => {
           CancelOrder,
           PaymentHandler,
           changeProfile,
+          BestProduct,
+          BestProducts,
           myOrders,
           users,
           SearchData,

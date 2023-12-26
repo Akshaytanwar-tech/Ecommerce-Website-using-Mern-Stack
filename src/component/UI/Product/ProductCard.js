@@ -5,12 +5,12 @@ const ProductCard = (props) => {
   return (
     <>
       <div
-        className="card border-0 p-2 bg-transparent"
+        className="card border-0 p-4 bg-transparent"
         style={{ width: "14rem" }}
       >
         <img
           src={props.product.photo}
-          className="card-img-top px-3"
+          className="card-img-top px-2"
           alt="..."
           style={{ height: "10rem" }}
         />

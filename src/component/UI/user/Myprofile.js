@@ -99,14 +99,14 @@ const Myprofile = () => {
                     <button
                       onClick={HandleLogout}
                       type="button"
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-sm"
                     >
                       Log Out
                     </button>
                     <button
                       onClick={HandleChangePassword}
                       type="button"
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-sm"
                     >
                       Change Password
                     </button>

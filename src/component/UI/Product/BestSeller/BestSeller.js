@@ -1,9 +1,13 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import EcomContext from "../../../../context/EcomContext";
 
-const BestSeller = (props) => {
-  const Context = useContext(EcomContext);
-  const { Product, FetchProductbyCategories } = Context;
+const BestSeller = () => {
+  const context = useContext(EcomContext);
+  const { BestProduct, BestProducts } = context;
+
+  useEffect(() => {
+    BestProduct();
+  }, []);
 
   return (
     <>
@@ -15,7 +19,7 @@ const BestSeller = (props) => {
         <div class="carousel-inner" style={{ height: "200px" }}>
           <div class="carousel-item  active">
             <div className="container d-flex justify-content-center">
-              {props.Category.slice(0, 4).map((e) => {
+              {BestProducts.slice(0, 4).map((e) => {
                 return (
                   <div className="mx-3 my-4 border">
                     <img
@@ -24,9 +28,9 @@ const BestSeller = (props) => {
                       style={{ height: "100px", width: "130px" }}
                     />
                     <div className="text-center">
-                      <small>{e.name}</small>
+                      <small>{e.Product_Name.substring(0,15) + "..."}</small>
                       <br />
-                      <small>price</small>
+                      <small>₹{e.price}</small>
                     </div>
                   </div>
                 );
@@ -35,7 +39,7 @@ const BestSeller = (props) => {
           </div>
           <div class="carousel-item">
             <div className="container d-flex justify-content-center">
-              {props.Category.slice(4, 8).map((e) => {
+              {BestProducts.slice(4, 8).map((e) => {
                 return (
                   <div className="my-4 mx-3 border">
                     <img
@@ -44,9 +48,9 @@ const BestSeller = (props) => {
                       style={{ height: "100px", width: "130px" }}
                     />
                     <div className="text-center">
-                      <small>{e.name}</small>
+                      <small>{e.Product_Name.substring(0,15) + "..."}</small>
                       <br />
-                      <small>price</small>
+                      <small>₹{e.price}</small>
                     </div>
                   </div>
                 );
@@ -55,11 +59,22 @@ const BestSeller = (props) => {
           </div>
           <div class="carousel-item">
             <div className="container d-flex justify-content-center">
-              <div className="m-4 my-3 border">container-1</div>
-              <div className="m-4 my-3 border">container-2</div>
-              <div className="m-4 my-3 border">container-3</div>
-              <div className="m-4 my-3 border">container-4</div>
-              <div className="m-4 my-3 border">container-4</div>
+              {BestProducts.slice(4, 8).map((e) => {
+                return (
+                  <div className="my-4 mx-3 border">
+                    <img
+                      src={e.photo}
+                      alt=""
+                      style={{ height: "100px", width: "130px" }}
+                    />
+                    <div className="text-center">
+                      <small>{e.Product_Name.substring(0,15) + "..."}</small>
+                      <br />
+                      <small>₹{e.price}</small>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

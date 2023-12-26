@@ -38,7 +38,7 @@ const ProductDescription = (props) => {
         </div>
       </div>
       <h1 className="text-center my-4">Product Description</h1>
-      <div className="container overflow-auto border py-3" style={{ height: "450px" }}>
+      <div className="container overflow-auto border py-3 my-3" style={{ height: "450px" }}>
         {props.product.Description_spec &&
           props.product.Description_spec.map((e, index) => {
             return index % 2 === 0 ? (
@@ -48,7 +48,7 @@ const ProductDescription = (props) => {
                     <img
                       src={e.Description_spec_photo}
                       className="img-fluid rounded-start p-4"
-                      style={{ maxHeight: "200px", maxWidth: "200px" }}
+                      style={{ maxHeight: "230px", maxWidth: "160px" }}
                       alt="..."
                     />
                   </div>
@@ -83,7 +83,7 @@ const ProductDescription = (props) => {
                     <img
                       src={e.Description_spec_photo}
                       className="img-fluid rounded-start p-4"
-                      style={{ maxHeight: "200px", maxWidth: "200px" }}
+                      style={{ maxHeight: "230px", maxWidth: "160px" }}
                       alt="..."
                     />
                   </div>
