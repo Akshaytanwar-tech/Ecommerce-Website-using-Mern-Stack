@@ -37,6 +37,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
+    console.log(isBest);
     let product = await Product.create({
       Brand_Name: Brand_Name,
       Product_Name: Product_Name,
@@ -52,7 +53,6 @@ router.post(
       Description_spec: Description_spec,
       isBest: isBest,
     });
-
     res.json(`${product.Product_Name} has been created`);
   }
 );
@@ -91,5 +91,11 @@ router.get("/Searchitem/:key", async (req, res) => {
     $or: [{ tags: { $regex: req.params.key } }],
   });
   res.json(searchedResult);
+});
+
+// API-7 :- To find the best product
+router.get("/isBest", async (req, res) => {
+  let bestPorducts = await Product.find({isBest : true});
+  res.json(bestPorducts);
 });
 module.exports = router;
