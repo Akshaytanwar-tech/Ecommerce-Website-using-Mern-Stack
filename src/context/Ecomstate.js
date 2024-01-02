@@ -97,15 +97,12 @@ const Ecomstate = (props) => {
   //Api:- 4 :- api for the best product
 
   const BestProduct = async () => {
-    const response = await fetch(
-      `http://localhost:5000/api/Product/isBest`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`http://localhost:5000/api/Product/isBest`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const json = await response.json();
     // console.log(json)
     setBestProducts(json);
@@ -164,7 +161,7 @@ const Ecomstate = (props) => {
         }),
       }
     );
- 
+
     const json = response.json();
     return json;
   };

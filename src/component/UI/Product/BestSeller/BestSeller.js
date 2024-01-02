@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import EcomContext from "../../../../context/EcomContext";
+import { Link } from "react-router-dom";
+import { MouseOver, MouseOut } from "../../../helpers/hover";
 
 const BestSeller = () => {
   const context = useContext(EcomContext);
@@ -28,7 +30,14 @@ const BestSeller = () => {
                       style={{ height: "100px", width: "130px" }}
                     />
                     <div className="text-center">
-                      <small>{e.Product_Name.substring(0,15) + "..."}</small>
+                      <Link
+                        to={`/products/Category/${e._id}`}
+                        onMouseOver={MouseOver}
+                        onMouseOut={MouseOut}
+                        className="text-decoration-none link-dark"
+                      >
+                        <small>{e.Product_Name.substring(0, 15) + "..."}</small>
+                      </Link>
                       <br />
                       <small>₹{e.price}</small>
                     </div>
@@ -48,7 +57,14 @@ const BestSeller = () => {
                       style={{ height: "100px", width: "130px" }}
                     />
                     <div className="text-center">
-                      <small>{e.Product_Name.substring(0,15) + "..."}</small>
+                      <Link
+                        to={`/products/Category/${e._id}`}
+                        onMouseOver={MouseOver}
+                        onMouseOut={MouseOut}
+                        className="text-decoration-none link-dark"
+                      >
+                        <small>{e.Product_Name.substring(0, 15) + "..."}</small>
+                      </Link>
                       <br />
                       <small>₹{e.price}</small>
                     </div>
@@ -68,7 +84,14 @@ const BestSeller = () => {
                       style={{ height: "100px", width: "130px" }}
                     />
                     <div className="text-center">
-                      <small>{e.Product_Name.substring(0,15) + "..."}</small>
+                      <Link
+                        to={`/products/Category/${e._id}`}
+                        onMouseOver={MouseOver}
+                        onMouseOut={MouseOut}
+                        className="text-decoration-none link-dark"
+                      >
+                        <small>{e.Product_Name.substring(0, 15) + "..."}</small>
+                      </Link>
                       <br />
                       <small>₹{e.price}</small>
                     </div>

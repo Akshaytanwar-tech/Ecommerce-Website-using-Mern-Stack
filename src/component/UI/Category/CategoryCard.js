@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { MouseOver, MouseOut } from "../../helpers/hover";
 
 const CategoryCard = (props) => {
   return (
@@ -17,8 +18,9 @@ const CategoryCard = (props) => {
         <div className="card-body text-center">
           <Link
             to={`/products/${props.For === "Category" ? props.id : "Category"}`}
-            className={`card-title text-dark justify-content-center text-capitalize h5`}
-            style={{ textDecoration: "none" }}
+            className={`card-title justify-content-center text-capitalize h5 text-decoration-none link-dark`}
+            onMouseOver={MouseOver}
+            onMouseOut={MouseOut}
           >
             {props.Name}
           </Link>
