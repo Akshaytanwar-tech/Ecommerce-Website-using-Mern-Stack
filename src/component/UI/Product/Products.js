@@ -3,6 +3,7 @@ import EcomContext from "../../../context/EcomContext";
 import { useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import Navbar from "../Navbar";
+import PriceFilter from "./PriceFilter";
 
 const Products = () => {
   const Context = useContext(EcomContext);
@@ -19,9 +20,10 @@ const Products = () => {
     <>
       <Navbar title="Dlipkart" />
       <div className="d-flex">
-        <div className="my-5" style={{ width: "800px" }}>
+        {/* <div className="my-5" style={{ width: "800px" }}>
           <div className=" text-center h3">Filter By Price</div>
-        </div>
+          <PriceFilter />
+        </div> */}
 
         <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 mt-3">
           {Product.map((element, index) => {

@@ -7,17 +7,31 @@ import Order from "../checkout/Order";
 const Cart = () => {
   const navigate = useNavigate();
   const context = useContext(EcomContext);
-  const { FetchCartitem, Cart, RemoveItemCart } = context;
+  const { FetchCartitem, Cart, RemoveItemCart, HandleQty } = context;
   let totalprice = 0;
 
   useEffect(() => {
     FetchCartitem();
     // eslint-disable-next-line
-  }, []);
+  }, [HandleQty]);
 
   const handlePlaceOrder = (price) => {
     <Order totalprice={price} />;
     navigate(`/Order/CartitemBuy`);
+  };
+
+  const HandleIncreaseQty = (id, quantity) => {
+    console.log("it is running");
+    //to handle increase quantity
+    HandleQty(id, quantity);
+  };
+  const HandleDecreaseQty = (id, quantity) => {
+    //to handle decrease quantity
+    if (quantity > 0) {
+      HandleQty(id, quantity);
+    } else {
+      return;
+    }
   };
   return (
     <>
@@ -49,6 +63,30 @@ const Cart = () => {
                               {e.Product_Name_Details}
                             </div>
                             <h4>₹{e.price}</h4>
+                            <div>
+                              <span>Qty:</span>
+                              <span
+                                className="border border-dark mx-1 px-2 py-1 rounded-circle fw-bold"
+                                onClick={() => {
+                                  HandleIncreaseQty(e._id, e.Quantity + 1);
+                                }}
+                                style={{ cursor: "pointer" }}
+                              >
+                                +
+                              </span>
+                              <span className="border px-2 py-1">
+                                {e.Quantity}
+                              </span>
+                              <span
+                                className="border border-dark mx-1 px-2 py-1 bg-light rounded-circle fw-bold"
+                                onClick={() => {
+                                  HandleDecreaseQty(e._id, e.Quantity - 1);
+                                }}
+                                style={{ cursor: "pointer" }}
+                              >
+                                -
+                              </span>
+                            </div>
                             <div className="container py-2">
                               <button
                                 type="button"

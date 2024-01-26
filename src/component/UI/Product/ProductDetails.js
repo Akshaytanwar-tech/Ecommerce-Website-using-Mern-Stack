@@ -15,13 +15,7 @@ const ProductDetails = () => {
     // eslint-disable-next-line
   }, [id]);
   const HandleAdditemCart = () => {
-    AddItemCart(
-      Productdetails.Brand_Name,
-      Productdetails.Product_Name_Details,
-      Productdetails.photo,
-      Productdetails.price,
-      id
-    );
+    AddItemCart(id);
     navigate("/cart");
   };
 

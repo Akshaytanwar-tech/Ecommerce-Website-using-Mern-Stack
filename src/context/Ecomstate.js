@@ -358,10 +358,10 @@ const Ecomstate = (props) => {
   // Api:-1 To add item to the cart
 
   const AddItemCart = async (
-    Brand_Name,
-    Product_Name_Details,
-    photo,
-    price,
+    // Brand_Name,
+    // Product_Name_Details,
+    // photo,
+    // price,
     id
   ) => {
     await fetch(`http://localhost:5000/api/Order/AddCart`, {
@@ -371,10 +371,6 @@ const Ecomstate = (props) => {
         token: localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        Brand_Name: Brand_Name,
-        Product_Name_Details: Product_Name_Details,
-        photo: photo,
-        price: price,
         id: id,
       }),
     });
@@ -409,6 +405,20 @@ const Ecomstate = (props) => {
       return e._id !== id;
     });
     setCart(changedCartitem);
+  };
+
+  //Api 4:- To handle the quantity
+
+  const HandleQty = async (id, quantity) => {
+    await fetch(`http://localhost:5000/api/Order/quantity/${id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Quantity: quantity,
+      }),
+    });
   };
 
   // ---------------------------------- APIs to handle checkout ----------------------------------------
@@ -541,6 +551,7 @@ const Ecomstate = (props) => {
           PaymentHandler,
           changeProfile,
           BestProduct,
+          HandleQty,
           BestProducts,
           myOrders,
           users,
