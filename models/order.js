@@ -28,6 +28,10 @@ const OrderSchema = new Schema({
   price: {
     type: Number,
   },
+  Quantity: {
+    type: Number,
+    default: 1,
+  },
 });
 const Order = mongoose.model("Order", OrderSchema);
 module.exports = Order;

@@ -2,20 +2,25 @@
 const express = require("express");
 const router = express.Router();
 const Order = require("../models/order");
+const Product = require("../models/product");
 const fetchuser = require("../middleware/fetchuser");
 
 // API:- 1 To add item to cart
 router.post("/AddCart", fetchuser, async (req, res) => {
   try {
-    const { Brand_Name, Product_Name_Details, price, id, photo } = req.body;
+    const { id } = req.body;
 
+    //find all product details from the id.
+    const product = await Product.findById(id);
+
+    // saving the details to the database.
     let cartItem = await Order.create({
-      product: id,
+      product: product._id,
       user: userID,
-      Brand_Name: Brand_Name,
-      Product_Name_Details: Product_Name_Details,
-      photo: photo,
-      price: price,
+      Brand_Name: product.Brand_Name,
+      Product_Name_Details: product.Product_Name_Details,
+      photo: product.photo,
+      price: product.price,
     });
 
     res.json(cartItem);
@@ -44,4 +49,21 @@ router.get("/removeItem/:id", async (req, res) => {
   }
 });
 
+// API:- 5 To manage the quanitity of the product
+
+router.post("/quantity/:id", async (req, res) => {
+  const { Quantity } = req.body;
+
+  const product = await Order.findById(req.params.id);
+  let updates = {
+    Quantity: Quantity,
+    price: product.price * Quantity,
+  };
+
+  await Order.findByIdAndUpdate(req.params.id, {
+    $set: updates,
+  });
+
+  res.json(product);
+});
 module.exports = router;
