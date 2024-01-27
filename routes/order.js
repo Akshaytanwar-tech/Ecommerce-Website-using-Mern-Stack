@@ -10,9 +10,14 @@ router.post("/AddCart", fetchuser, async (req, res) => {
   try {
     const { id } = req.body;
 
-    //find all product details from the id.
+    // find all product details from the id.
     const product = await Product.findById(id);
 
+    // If the product is already found
+    const IsFound = await Order.findOne({ product: id });
+    if(IsFound){
+      return
+    }
     // saving the details to the database.
     let cartItem = await Order.create({
       product: product._id,
@@ -52,18 +57,23 @@ router.get("/removeItem/:id", async (req, res) => {
 // API:- 5 To manage the quanitity of the product
 
 router.post("/quantity/:id", async (req, res) => {
-  const { Quantity } = req.body;
+  try {
+    const { Quantity } = req.body;
 
-  const product = await Order.findById(req.params.id);
-  let updates = {
-    Quantity: Quantity,
-    price: product.price * Quantity,
-  };
+    const product = await Product.findById(req.params.id);
 
-  await Order.findByIdAndUpdate(req.params.id, {
-    $set: updates,
-  });
+    let updates = {
+      Quantity: Quantity,
+      price: product.price * Quantity,
+    };
+    const Orderproduct = await Order.findOne({ product: req.params.id });
+    await Order.findByIdAndUpdate(Orderproduct._id, {
+      $set: updates,
+    });
 
-  res.json(product);
+    res.json(Orderproduct);
+  } catch (error) {
+    console.log(error);
+  }
 });
 module.exports = router;
