@@ -65,26 +65,27 @@ const Cart = () => {
                             <h4>₹{e.price}</h4>
                             <div>
                               <span>Qty:</span>
+
                               <span
-                                className="border border-dark mx-1 px-2 py-1 rounded-circle fw-bold"
+                                className="border border-dark mx-1 px-2 py-1 bg-light rounded-circle fw-bold"
                                 onClick={() => {
-                                  HandleIncreaseQty(e._id, e.Quantity + 1);
+                                  HandleDecreaseQty(e.product, e.Quantity - 1);
                                 }}
                                 style={{ cursor: "pointer" }}
                               >
-                                +
+                                -
                               </span>
                               <span className="border px-2 py-1">
                                 {e.Quantity}
                               </span>
                               <span
-                                className="border border-dark mx-1 px-2 py-1 bg-light rounded-circle fw-bold"
+                                className="border border-dark mx-1 px-2 py-1 rounded-circle fw-bold"
                                 onClick={() => {
-                                  HandleDecreaseQty(e._id, e.Quantity - 1);
+                                  HandleIncreaseQty(e.product, e.Quantity + 1);
                                 }}
                                 style={{ cursor: "pointer" }}
                               >
-                                -
+                                +
                               </span>
                             </div>
                             <div className="container py-2">
