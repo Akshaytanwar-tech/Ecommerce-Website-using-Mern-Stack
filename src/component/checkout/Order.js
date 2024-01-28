@@ -21,6 +21,7 @@ const Order = (props) => {
     FetchProductDetails,
     Productdetails,
     PaymentHandler,
+    RemoveAllItems,
   } = Context;
 
   // Handller To order from the cart
@@ -43,6 +44,7 @@ const Order = (props) => {
           "Cash on delivery"
         );
       });
+      RemoveAllItems();
       navigate("/myorders");
     } else {
       // Handle bulk payment for the online payment mode.
@@ -69,6 +71,7 @@ const Order = (props) => {
             "Online"
           );
         });
+        RemoveAllItems();
       }
     }
 

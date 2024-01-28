@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EcomContext from "./EcomContext";
 import { loadStripe } from "@stripe/stripe-js";
+import RemoveAllItems from "../Api/Cart/RemoveAllItems";
 
 const Ecomstate = (props) => {
   const [Category, setCategory] = useState([]);
@@ -552,6 +553,7 @@ const Ecomstate = (props) => {
           changeProfile,
           BestProduct,
           HandleQty,
+          RemoveAllItems,
           BestProducts,
           myOrders,
           users,
