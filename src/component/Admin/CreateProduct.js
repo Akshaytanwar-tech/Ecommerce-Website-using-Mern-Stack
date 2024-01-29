@@ -324,7 +324,7 @@ const CreateProduct = () => {
               name="Description_spec_title"
               value={Description.Description_spec_title}
               onChange={HandleDescriptionChange}
-              placeholder="Username"
+              placeholder="title"
               aria-label="Username"
               aria-describedby="basic-addon1"
             />
@@ -339,7 +339,7 @@ const CreateProduct = () => {
               name="Description_spec_desc"
               value={Description.Description_spec_desc}
               onChange={HandleDescriptionChange}
-              placeholder="Username"
+              placeholder="Description"
               aria-label="Username"
               aria-describedby="basic-addon1"
             />
@@ -354,7 +354,7 @@ const CreateProduct = () => {
               name="Description_spec_photo"
               value={Description.Description_spec_photo}
               onChange={HandleDescriptionChange}
-              placeholder="Username"
+              placeholder="Photo link"
               aria-label="Username"
               aria-describedby="basic-addon1"
             />
@@ -416,7 +416,7 @@ const CreateProduct = () => {
             checked={isBest ? true : false}
           />
           <label class="form-check-label" for="flexCheckChecked">
-            Checked checkbox
+            IsBest
           </label>
         </div>
         <button

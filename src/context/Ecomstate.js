@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import EcomContext from "./EcomContext";
 import { loadStripe } from "@stripe/stripe-js";
 import RemoveAllItems from "../Api/Cart/RemoveAllItems";
+import AddItemCart from "../Api/Cart/AddItemCart";
+import HandleQty from "../Api/Cart/HandleQty";
+import HandleCheckout from "../Api/Orders/HandleCheckout";
+import Signup from "../Api/User/Auth/Signup";
+import SignIn from "../Api/User/Auth/SignIn";
+import forgotpassword from "../Api/User/ForgotPassword/forgotpassword";
+import newPassword from "../Api/User/ForgotPassword/newPassword";
+import changepassword from "../Api/User/ForgotPassword/changepassword";
+import CreateCategory from "../Api/Admin/CreateCategory";
+import CreateProduct from "../Api/Admin/CreateProduct";
+import changeProfile from "../Api/User/changeProfile";
 
 const Ecomstate = (props) => {
   const [Category, setCategory] = useState([]);
@@ -110,63 +121,6 @@ const Ecomstate = (props) => {
   };
   //------------------------------------------- APIs for the Admin -------------------------------------------------//
 
-  // Api:- 1 To create the Category
-  const CreateCategory = async (name, photo) => {
-    let response = await fetch(`http://localhost:5000/api/Category/category`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: name, photo: photo }),
-    });
-    const json = await response.json();
-    return json;
-  };
-
-  //Api:- 2 To create the product
-  const CreateProduct = async (
-    Brand_Name,
-    Product_Name,
-    Product_Name_Details,
-    Description,
-    photo,
-    price,
-    quantity,
-    CategoryID,
-    tags,
-    Description_spec,
-    ProductHighlight,
-    isBestProduct
-  ) => {
-    console.log(isBestProduct);
-    const response = await fetch(
-      `http://localhost:5000/api/Product/Productcreate`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Brand_Name: Brand_Name,
-          Product_Name: Product_Name,
-          Product_Name_Details: Product_Name_Details,
-          Description: Description,
-          photo: photo,
-          price: price,
-          quantity: quantity,
-          CategoryID: CategoryID,
-          tags: tags,
-          Description_spec: Description_spec,
-          ProductHighlight: ProductHighlight,
-          isBest: isBestProduct,
-        }),
-      }
-    );
-
-    const json = response.json();
-    return json;
-  };
-
   //API- 3:- To Delete a Category.
   const DeleteAcategory = async (id) => {
     const response = await fetch(
@@ -211,43 +165,6 @@ const Ecomstate = (props) => {
 
   // ----------------------------------------------- User APIs -----------------------------------------------------//
 
-  // API:-1 To Sign Up A user
-  const Signup = async (username, email, password, photo, address, mobile) => {
-    const response = await fetch(`http://localhost:5000/api/auth/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password,
-        photo: photo,
-        address: address,
-        mobile: mobile,
-      }),
-    });
-    const json = await response.json();
-    return json;
-  };
-
-  // API:-2 To Sign IN A user
-
-  const SignIn = async (email, password) => {
-    const response = await fetch(`http://localhost:5000/api/auth/signin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-    const json = await response.json();
-    return json;
-  };
-
   //API:- 3 To find the user data from its token
 
   const FetchUserData = async () => {
@@ -275,107 +192,8 @@ const Ecomstate = (props) => {
     setUsers(json.length);
   };
 
-  //API:-5 To chaeck the entities to forgot password
-
-  const forgotpassword = async (username, email, mobile) => {
-    const response = await fetch(
-      `http://localhost:5000/api/auth/VerifydetailsForgotPassword`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          mobile: mobile,
-        }),
-      }
-    );
-    const json = await response.json();
-    return json;
-  };
-
-  // API:-6 To set new password
-  const newPassword = async (newPassword, confirmPassword, id) => {
-    const response = await fetch(
-      `http://localhost:5000/api/auth/newpassword/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          newPassword: newPassword,
-          confirmPassword: confirmPassword,
-        }),
-      }
-    );
-    const json = await response.json();
-    return json;
-  };
-
-  //Api-7:- To change password in user profile
-
-  const changepassword = async (OldPassword, NewPassword, ConfirmPassword) => {
-    const response = await fetch(
-      `http://localhost:5000/api/auth/changepassword`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
-        },
-        body: JSON.stringify({
-          password: OldPassword,
-          newPassword: NewPassword,
-          confirmPassword: ConfirmPassword,
-        }),
-      }
-    );
-    const json = await response.json();
-    return json;
-  };
-
-  //Api: 8:- To Edit the profile
-
-  const changeProfile = async (username, email, mobile, address) => {
-    await fetch("http://localhost:5000/api/auth/editprofile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        address: address,
-        mobile: mobile,
-      }),
-    });
-  };
+  
   // -----------------------------------------APIs for Orders------------------------------------------------- //
-
-  // Api:-1 To add item to the cart
-
-  const AddItemCart = async (
-    // Brand_Name,
-    // Product_Name_Details,
-    // photo,
-    // price,
-    id
-  ) => {
-    await fetch(`http://localhost:5000/api/Order/AddCart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        id: id,
-      }),
-    });
-  };
 
   // API :- 2 To fetch the cart item
   const FetchCartitem = async () => {
@@ -410,54 +228,8 @@ const Ecomstate = (props) => {
 
   //Api 4:- To handle the quantity
 
-  const HandleQty = async (id, quantity) => {
-    await fetch(`http://localhost:5000/api/Order/quantity/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        Quantity: quantity,
-      }),
-    });
-  };
-
   // ---------------------------------- APIs to handle checkout ----------------------------------------
 
-  // API 1:- To make an order
-  const HandleCheckout = async (
-    name,
-    address,
-    Mobile,
-    AlternateMobile,
-    PINcode,
-    id,
-    productName,
-    productPhoto,
-    productPrice,
-    mode
-  ) => {
-    // Save name, address, mobile no etc in db
-    await fetch(`http://localhost:5000/api/checkout/Order`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        productID: id,
-        name: name,
-        address: address,
-        Mobile: Mobile,
-        AlternateMobile: AlternateMobile,
-        PINcode: PINcode,
-        productName: productName,
-        productPhoto: productPhoto,
-        productPrice: productPrice,
-        PaymentMode: mode,
-      }),
-    });
-  };
   // API 2:- To fetch orders done by the user
   const Myorders = async () => {
     const response = await fetch(

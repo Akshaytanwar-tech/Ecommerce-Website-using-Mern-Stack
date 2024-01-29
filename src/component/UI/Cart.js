@@ -13,7 +13,7 @@ const Cart = () => {
   useEffect(() => {
     FetchCartitem();
     // eslint-disable-next-line
-  }, [HandleQty]);
+  }, [HandleQty, Cart]);
 
   const handlePlaceOrder = (price) => {
     <Order totalprice={price} />;
@@ -21,7 +21,6 @@ const Cart = () => {
   };
 
   const HandleIncreaseQty = (id, quantity) => {
-    console.log("it is running");
     //to handle increase quantity
     HandleQty(id, quantity);
   };
