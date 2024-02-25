@@ -21,6 +21,8 @@ router.post("/Order", fetchuser, async (req, res) => {
       productPhoto,
       productPrice,
       PaymentMode,
+      isConfirmed,
+      DelieveryTime,
     } = req.body;
 
     let order = await Checkout.create({
@@ -35,6 +37,8 @@ router.post("/Order", fetchuser, async (req, res) => {
       productPhoto: productPhoto,
       productPrice: productPrice,
       PaymentMode: PaymentMode,
+      isConfirmed,
+      DelieveryTime,
     });
     res.json(order);
   } catch (error) {
@@ -91,4 +95,34 @@ router.post("/api/create-checkout-session", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+// Api - This is to fetch all the orders.
+
+router.get("/fetchallOrders", async (req, res) => {
+  try {
+    const AllOrders = await Checkout.find();
+    res.json(AllOrders);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//Api :- To confirm the order by the buyer.
+router.put("/confirmOrder/:id", async (req, res) => {
+  try {
+    const order = await Checkout.findByIdAndUpdate(req.params.id, {
+      isConfirmed: true,
+    });
+    res.send(order);
+  } catch (error) {
+    console.log(error);
+  }
+});
+// Api :- to send the delievery time to the user
+router.put("/delieverytime/:id", async (req, res) => {
+  const id = req.params.id;
+  const { time } = req.body;
+  const product = await Checkout.findByIdAndUpdate(id, { DelieveryTime: time });
+  res.json(product);
 });

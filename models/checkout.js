@@ -48,6 +48,14 @@ const CheckoutSchema = new Schema({
     type: Number,
     required: true,
   },
+  isConfirmed: {
+    type: Boolean,
+    default: false,
+  },
+  DelieveryTime: {
+    type: Number,
+    default: null,
+  },
 });
 const Checkout = mongoose.model("Checkout", CheckoutSchema);
 module.exports = Checkout;

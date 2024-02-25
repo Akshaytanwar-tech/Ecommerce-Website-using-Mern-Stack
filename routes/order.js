@@ -19,7 +19,7 @@ router.post("/AddCart", fetchuser, async (req, res) => {
 
     // If the product is already found
     // const IsFound = await Order.findOne({ product: id });
-    
+
     // saving the details to the database.
     let cartItem = await Order.create({
       product: id,
@@ -88,9 +88,14 @@ router.post("/removeallItems", fetchuser, async (req, res) => {
   }
 });
 
+
+//--------------------------This is only for testing-------------------------------//
+
 router.get("/testApi", fetchuser, async (req, res) => {
   const { id } = req.body;
   const product = await Order.findOne({ product: id, user: userID });
   res.json(product);
 });
 module.exports = router;
+
+//-------------------------This is only for testing-------------------------------//
