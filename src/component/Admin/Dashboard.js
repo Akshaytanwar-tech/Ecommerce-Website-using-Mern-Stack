@@ -79,6 +79,17 @@ const Dashboard = () => {
                     </span>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link
+                    to="/Admin/ManageOrders"
+                    className="nav-link align-middle px-0"
+                  >
+                    <i className="fs-4 bi-house"></i>
+                    <span className="ms-1 d-none d-sm-inline text-warning">
+                      Manage Order
+                    </span>
+                  </Link>
+                </li>
               </ul>
               <hr />
             </div>

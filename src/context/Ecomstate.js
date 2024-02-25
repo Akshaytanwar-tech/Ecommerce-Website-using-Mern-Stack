@@ -13,6 +13,9 @@ import changepassword from "../Api/User/ForgotPassword/changepassword";
 import CreateCategory from "../Api/Admin/CreateCategory";
 import CreateProduct from "../Api/Admin/CreateProduct";
 import changeProfile from "../Api/User/changeProfile";
+import ManageOrders from "../Api/Admin/ManageOrders";
+import ConfirmOrder from "../Api/Admin/ConfirmOrder";
+import SetDeliverytime from "../Api/Admin/SetDeliverytime"
 
 const Ecomstate = (props) => {
   const [Category, setCategory] = useState([]);
@@ -192,7 +195,6 @@ const Ecomstate = (props) => {
     setUsers(json.length);
   };
 
-  
   // -----------------------------------------APIs for Orders------------------------------------------------- //
 
   // API :- 2 To fetch the cart item
@@ -326,6 +328,9 @@ const Ecomstate = (props) => {
           BestProduct,
           HandleQty,
           RemoveAllItems,
+          ManageOrders,
+          ConfirmOrder,
+          SetDeliverytime,
           BestProducts,
           myOrders,
           users,

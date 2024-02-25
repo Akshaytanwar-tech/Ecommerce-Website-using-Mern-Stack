@@ -25,6 +25,7 @@ import Alert from "./component/UI/Alert";
 import Success from "./component/checkout/StripePayment/Success";
 import Cancel from "./component/checkout/StripePayment/Cancel";
 import Homepage from "./component/Seller/Homepage";
+import ManageOrder from "./component/Admin/ManageOrder";
 function App() {
   return (
     <>
@@ -93,6 +94,7 @@ function App() {
             <Route path="/Ordersuccess" element={<Success />} />
             <Route path="/Ordercancel" element={<Cancel />} />
             <Route path="/seller/Homepage" element={<Homepage />} />
+            <Route path="/Admin/ManageOrders" element={<ManageOrder />} />
           </Routes>
         </BrowserRouter>
       </EcomContext>

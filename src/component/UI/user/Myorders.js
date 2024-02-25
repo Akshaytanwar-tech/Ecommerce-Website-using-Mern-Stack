@@ -9,7 +9,7 @@ const Myorders = () => {
   useEffect(() => {
     Myorders();
     // eslint-disable-next-line
-  }, []);
+  }, [myOrders]);
 
   // Cancel the order handle api
   const HandelCancelorder = (id) => {

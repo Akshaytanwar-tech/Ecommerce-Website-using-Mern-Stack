@@ -6,3 +6,10 @@ exports.MouseOver = (e) => {
 exports.MouseOut = (e) => {
   e.target.style.color = "";
 };
+
+exports.MouseOverImage = (e)=>{
+  e.target.style.padding = "0px"
+}
+exports.MouseOutImage = (e)=>{
+  e.target.style.padding = "1px"
+}
