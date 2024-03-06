@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectToMongo = async () => {
   await mongoose.connect(
-    "mongodb://localhost:27017/EcommerceDatabase",
+    "mongodb+srv://new:akshay2574@cluster0.euy4ayz.mongodb.net/",
 
     () => {
       console.log("Server connected to Database");
