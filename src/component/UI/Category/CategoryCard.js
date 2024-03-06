@@ -12,11 +12,11 @@ const CategoryCard = (props) => {
     <>
       <div
         className="card border-0 p-2 bg-transparent p-3"
-        style={{ width: "14rem" }}
+        style={{ }}
       >
         <div
           className="card-body text-center"
-          style={{ height: "12rem", width: "14rem" }}
+          style={{ height: "12rem" }}
         >
           <Link
             to={`/products/${props.For === "Category" ? props.id : "Category"}`}
@@ -28,7 +28,7 @@ const CategoryCard = (props) => {
               src={props.Photo}
               className="card-img-top"
               alt="..."
-              style={{ height: "10rem", width: "12rem", padding:"1px" }}
+              style={{ height: "10rem", padding:"1px" }}
               onMouseOver={MouseOverImage}
               onMouseOut={MouseOutImage}
             />
