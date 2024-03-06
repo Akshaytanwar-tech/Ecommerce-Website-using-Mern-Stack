@@ -16,7 +16,7 @@ const CategoryCard = (props) => {
       >
         <div
           className="card-body text-center"
-          style={{ height: "12rem" }}
+          style={{  }}
         >
           <Link
             to={`/products/${props.For === "Category" ? props.id : "Category"}`}
