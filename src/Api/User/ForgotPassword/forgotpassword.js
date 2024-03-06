@@ -1,8 +1,8 @@
 // To check the entities to forgot password.
-
+import config from "../../../config";
 const forgotpassword = async (username, email, mobile) => {
   const response = await fetch(
-    `http://localhost:5000/api/auth/VerifydetailsForgotPassword`,
+    `${config.APIUrl}/api/auth/VerifydetailsForgotPassword`,
     {
       method: "POST",
       headers: {

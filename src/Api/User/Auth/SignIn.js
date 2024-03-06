@@ -1,5 +1,6 @@
+import config from "../../../config";
 const SignIn = async (email, password) => {
-  const response = await fetch(`http://localhost:5000/api/auth/signin`, {
+  const response = await fetch(`${config.APIUrl}/api/auth/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

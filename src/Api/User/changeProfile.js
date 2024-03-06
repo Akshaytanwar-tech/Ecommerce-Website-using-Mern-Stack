@@ -1,7 +1,7 @@
 // Api to edit the profile
-
+import config from "../../config";
 const changeProfile = async (username, email, mobile, address) => {
-  await fetch("http://localhost:5000/api/auth/editprofile", {
+  await fetch(`${config.APIUrl}/api/auth/editprofile`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

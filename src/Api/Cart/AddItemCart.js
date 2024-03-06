@@ -1,7 +1,7 @@
 // Api to add item to the cart
-
+import config from "../../config";
 const AddItemCart = async (id) => {
-  return await fetch(`http://localhost:5000/api/Order/AddCart`, {
+  return await fetch(`${config.APIUrl}/api/Order/AddCart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

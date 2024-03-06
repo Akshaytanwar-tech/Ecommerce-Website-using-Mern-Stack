@@ -1,7 +1,7 @@
 // Api to remove all the item to the cart after ordering.
-
+import config from "../../config";
 const RemoveAllItems = async () => {
-  return await fetch(`http://localhost:5000/api/Order/removeallItems`, {
+  return await fetch(`${config.APIUrl}/api/Order/removeallItems`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

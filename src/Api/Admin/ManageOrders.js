@@ -1,5 +1,7 @@
+import config from "../../config";
+
 const ManageOrders = async () => {
-  const res = await fetch(`http://localhost:5000/api/checkout/fetchallOrders`, {
+  const res = await fetch(`${config.APIUrl}/api/checkout/fetchallOrders`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

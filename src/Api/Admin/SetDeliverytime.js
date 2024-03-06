@@ -1,5 +1,7 @@
+import config from "../../config";
+
 const SetDeliverytime = async (id, time) => {
-  await fetch(`http://localhost:5000/api/checkout/delieverytime/${id}`, {
+  await fetch(`${config.APIUrl}/api/checkout/delieverytime/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

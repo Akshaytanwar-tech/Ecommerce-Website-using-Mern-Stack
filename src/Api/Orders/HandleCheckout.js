@@ -1,5 +1,5 @@
 // Api to create an order
-
+import config from "../../config";
 const HandleCheckout = async (
   name,
   address,
@@ -13,7 +13,7 @@ const HandleCheckout = async (
   mode
 ) => {
   // Save name, address, mobile no etc in db
-  await fetch(`http://localhost:5000/api/checkout/Order`, {
+  await fetch(`${config.APIUrl}/api/checkout/Order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

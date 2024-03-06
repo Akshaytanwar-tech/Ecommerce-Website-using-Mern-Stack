@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import config from "../config";
 import EcomContext from "./EcomContext";
 import { loadStripe } from "@stripe/stripe-js";
 import RemoveAllItems from "../Api/Cart/RemoveAllItems";
@@ -15,7 +16,7 @@ import CreateProduct from "../Api/Admin/CreateProduct";
 import changeProfile from "../Api/User/changeProfile";
 import ManageOrders from "../Api/Admin/ManageOrders";
 import ConfirmOrder from "../Api/Admin/ConfirmOrder";
-import SetDeliverytime from "../Api/Admin/SetDeliverytime"
+import SetDeliverytime from "../Api/Admin/SetDeliverytime";
 
 const Ecomstate = (props) => {
   const [Category, setCategory] = useState([]);
@@ -35,7 +36,7 @@ const Ecomstate = (props) => {
   // API :- 1 To fetch all the categories.
   const FetchCategories = async () => {
     const response = await fetch(
-      `http://localhost:5000/api/Category/fetchcategories`,
+      `${config.APIUrl}/api/Category/fetchcategories`,
       {
         method: "GET",
         headers: {
@@ -52,7 +53,7 @@ const Ecomstate = (props) => {
   // API :- 1 To fetch fetch all the products of a particular categories.
   const FetchProductbyCategories = async (id) => {
     const response = await fetch(
-      `http://localhost:5000/api/Product/Fetchallproductbycategory/${id}`,
+      `${config.APIUrl}/api/Product/Fetchallproductbycategory/${id}`,
       {
         method: "POST",
         headers: {
@@ -66,7 +67,7 @@ const Ecomstate = (props) => {
   // Api :- 2 To fetch product details with product id
   const FetchProductDetails = async (id) => {
     const response = await fetch(
-      `http://localhost:5000/api/Product//Fetchproductdetail/${id}`,
+      `${config.APIUrl}/api/Product//Fetchproductdetail/${id}`,
       {
         method: "POST",
         headers: {
@@ -81,7 +82,7 @@ const Ecomstate = (props) => {
   // API:- 3 To fetch all the PRODUCTS
   const FetchallProducts = async () => {
     const response = await fetch(
-      `http://localhost:5000/api/Product/Fetchallproduct`,
+      `${config.APIUrl}/api/Product/Fetchallproduct`,
       {
         method: "GET",
         headers: {
@@ -97,7 +98,7 @@ const Ecomstate = (props) => {
 
   const SearchProduct = async (params) => {
     const response = await fetch(
-      `http://localhost:5000/api/Product//Searchitem/${params}`,
+      `${config.APIUrl}/api/Product//Searchitem/${params}`,
       {
         method: "GET",
         headers: {
@@ -112,7 +113,7 @@ const Ecomstate = (props) => {
   //Api:- 4 :- api for the best product
 
   const BestProduct = async () => {
-    const response = await fetch(`http://localhost:5000/api/Product/isBest`, {
+    const response = await fetch(`${config.APIUrl}/api/Product/isBest`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +128,7 @@ const Ecomstate = (props) => {
   //API- 3:- To Delete a Category.
   const DeleteAcategory = async (id) => {
     const response = await fetch(
-      `http://localhost:5000/api/Category/deletecategory/${id}`,
+      `${config.APIUrl}/api/Category/deletecategory/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -150,7 +151,7 @@ const Ecomstate = (props) => {
   //API-4 :- To delete a product.
   const DeleteAproduct = async (id) => {
     const res = await fetch(
-      `http://localhost:5000/api/Product/deleteproduct/${id}`,
+      `${config.APIUrl}/api/Product/deleteproduct/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -171,7 +172,7 @@ const Ecomstate = (props) => {
   //API:- 3 To find the user data from its token
 
   const FetchUserData = async () => {
-    const response = await fetch(`http://localhost:5000/api/auth/fetchuser`, {
+    const response = await fetch(`${config.APIUrl}/api/auth/fetchuser`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -185,7 +186,7 @@ const Ecomstate = (props) => {
   // API:-4 To find the length of all user present to show on the dashboard
 
   const fetchalluser = async () => {
-    const response = await fetch(`http://localhost:5000/api/auth/alluser`, {
+    const response = await fetch(`${config.APIUrl}/api/auth/alluser`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -199,16 +200,13 @@ const Ecomstate = (props) => {
 
   // API :- 2 To fetch the cart item
   const FetchCartitem = async () => {
-    const response = await fetch(
-      `http://localhost:5000/api/Order/fetchCartitems`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
-        },
-      }
-    );
+    const response = await fetch(`${config.APIUrl}/api/Order/fetchCartitems`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        token: localStorage.getItem("token"),
+      },
+    });
     const json = await response.json();
     setCart(json);
   };
@@ -216,7 +214,7 @@ const Ecomstate = (props) => {
   // API :- 3 To remove the element from the cart
 
   const RemoveItemCart = async (id) => {
-    await fetch(`http://localhost:5000/api/Order/removeItem/${id}`, {
+    await fetch(`${config.APIUrl}/api/Order/removeItem/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -234,16 +232,13 @@ const Ecomstate = (props) => {
 
   // API 2:- To fetch orders done by the user
   const Myorders = async () => {
-    const response = await fetch(
-      `http://localhost:5000/api/checkout/fetchOrder`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
-        },
-      }
-    );
+    const response = await fetch(`${config.APIUrl}/api/checkout/fetchOrder`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        token: localStorage.getItem("token"),
+      },
+    });
     const data = await response.json();
     setmyOrders(data);
   };
@@ -251,7 +246,7 @@ const Ecomstate = (props) => {
   //API 3:- To cancel the order
 
   const CancelOrder = async (id) => {
-    await fetch(`http://localhost:5000/api/checkout//cancelorder/${id}`, {
+    await fetch(`${config.APIUrl}/api/checkout//cancelorder/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -272,7 +267,7 @@ const Ecomstate = (props) => {
     );
 
     const response = await fetch(
-      "http://localhost:5000/api/checkout/api/create-checkout-session",
+      `${config.APIUrl}/api/checkout/api/create-checkout-session`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
