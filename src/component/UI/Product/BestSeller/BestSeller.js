@@ -9,7 +9,7 @@ const BestSeller = () => {
 
   useEffect(() => {
     BestProduct();
-  }, []);
+  }, [BestProduct]);
 
   return (
     <>
@@ -18,17 +18,13 @@ const BestSeller = () => {
         id="carouselExample"
         class="carousel slide border border-white bg-white container"
       >
-        <div class="carousel-inner" style={{ height: "200px" }}>
+        <div class="carousel-inner" style={{ maxHeight: "200px" }}>
           <div class="carousel-item  active">
             <div className="container d-flex justify-content-center">
               {BestProducts.slice(0, 4).map((e) => {
                 return (
                   <div className="mx-3 my-4 border">
-                    <img
-                      src={e.photo}
-                      alt=""
-                      style={{ height: "100px", width: "130px" }}
-                    />
+                    <img src={e.photo} alt="" style={{ maxHeight: "120px" }} />
                     <div className="text-center">
                       <Link
                         to={`/products/Category/${e._id}`}
@@ -51,11 +47,7 @@ const BestSeller = () => {
               {BestProducts.slice(4, 8).map((e) => {
                 return (
                   <div className="my-4 mx-3 border">
-                    <img
-                      src={e.photo}
-                      alt=""
-                      style={{ height: "100px", width: "130px" }}
-                    />
+                    <img src={e.photo} alt="" style={{ maxHeight: "120px" }} />
                     <div className="text-center">
                       <Link
                         to={`/products/Category/${e._id}`}
@@ -78,11 +70,7 @@ const BestSeller = () => {
               {BestProducts.slice(4, 8).map((e) => {
                 return (
                   <div className="my-4 mx-3 border">
-                    <img
-                      src={e.photo}
-                      alt=""
-                      style={{ height: "100px", width: "130px" }}
-                    />
+                    <img src={e.photo} alt="" style={{ maxHeight: "120px" }} />
                     <div className="text-center">
                       <Link
                         to={`/products/Category/${e._id}`}

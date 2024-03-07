@@ -27,7 +27,7 @@ const ProductCard = (props) => {
           />
           <div className="card-body text-center">
             {/* <div className="fw-bold">{props.product.Brand_Name}</div> */}
-            <div className="fw-bold text-left">₹{props.product.price}</div>
+            <p className="fw-bold text-left">₹{props.product.price}</p>
             <small>{props.product.Product_Name}</small>
           </div>
         </Link>
