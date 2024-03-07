@@ -8,16 +8,16 @@ const PriceFilter = () => {
     <>
       <input
         type="range"
-        class="form-range"
+        className="form-range"
         min="0"
         max="100"
         id="customRange2"
         onChange={HandlePriceFilter}
       />
-      <label for="customRange2" class="form-label">
+      <label htmlFor="customRange2" className="form-label">
         0
       </label>
-      <span for="customRange2" class="top-0 start-155">
+      <span htmlFor="customRange2" className="top-0 start-155">
         100
       </span>
     </>

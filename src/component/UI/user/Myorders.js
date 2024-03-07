@@ -22,41 +22,41 @@ const Myorders = () => {
       {myOrders.map((e, i) => {
         return (
           <div className="container my-3" key={i}>
-            <div class="card">
-              <div class="card-header">
+            <div className="card">
+              <div className="card-header">
                 <strong>Product name:</strong> {e.productName}
               </div>
-              <div class="row g-0" style={{ maxWidth: "600px" }}>
-                <div class="col-md-4">
+              <div className="row g-0" style={{ maxWidth: "600px" }}>
+                <div className="col-md-4">
                   <img
                     src={e.productPhoto}
-                    class="img-fluid rounded-start p-2"
+                    className="img-fluid rounded-start p-2"
                     alt="...THis is the  for the product"
                     style={{ maxHeight: "200px", maxWidth: "200px" }}
                   />
                 </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h6 class="card-title">Address</h6>
-                    <div class="card-text">{e.name}</div>
-                    <div class="card-text">{e.address}</div>
-                    <div class="card-text">
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h6 className="card-title">Address</h6>
+                    <div className="card-text">{e.name}</div>
+                    <div className="card-text">{e.address}</div>
+                    <div className="card-text">
                       <strong>Price:</strong> ₹{e.productPrice}
                     </div>
-                    <p class="card-text">
-                      <small class="text-muted">Delieverd in ...........</small>
+                    <p className="card-text">
+                      <small className="text-muted">Delieverd in ...........</small>
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="card-footer d-flex justify-content-between">
+              <div className="card-footer d-flex justify-content-between">
                 <div>
                   <strong>Payment Mode:</strong> {e.PaymentMode}
                 </div>
                 <div>
                   <button
                     type="button"
-                    class="btn btn-primary btn-sm"
+                    className="btn btn-primary btn-sm"
                     onClick={() => {
                       HandelCancelorder(e._id);
                     }}

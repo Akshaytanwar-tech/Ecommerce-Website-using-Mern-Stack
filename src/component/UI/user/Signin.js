@@ -48,7 +48,7 @@ const Signin = () => {
               className="form-control"
               required
             />
-            <div class="invalid-feedback">Please choose a username.</div>
+            <div className="invalid-feedback">Please choose a username.</div>
           </div>
 
           <div className="form-outline mb-4">

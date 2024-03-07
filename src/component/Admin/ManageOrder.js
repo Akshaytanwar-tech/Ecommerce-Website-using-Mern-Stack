@@ -22,7 +22,6 @@ const ManageOrder = () => {
   const HandleRejectOrder = () => {
     //this is to handle the reject order.
   };
-  console.log("running time");
 
   // this is to handle onchange of delievery
   const HandleChangeDelieverytime = (e) => {
@@ -102,7 +101,7 @@ const ManageOrder = () => {
                       </div>
                     ) : (
                       <div className="container d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" className="btn btn-primary">
                           Click here if order Delivered
                         </button>
                       </div>

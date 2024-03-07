@@ -281,14 +281,14 @@ const CreateProduct = () => {
         </select>
         <div className="container border mt-2 p-2">
           Add Product Highlights
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">
               Product Highlights
             </span>
             <input
               type="text"
               name="Highlight"
-              class="form-control"
+              className="form-control"
               placeholder="Product Highlights"
               aria-label="Username"
               value={ProductHighlight.Highlight}
@@ -299,7 +299,7 @@ const CreateProduct = () => {
           <div className="d-flex container justify-content-end">
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={Handle_Pro_High_onclick}
             >
               Add
@@ -314,13 +314,13 @@ const CreateProduct = () => {
         </div>
         <div className="container border my-2 py-2">
           Product Description Specification
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">
               Title
             </span>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               name="Description_spec_title"
               value={Description.Description_spec_title}
               onChange={HandleDescriptionChange}
@@ -329,13 +329,13 @@ const CreateProduct = () => {
               aria-describedby="basic-addon1"
             />
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">
               Description
             </span>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               name="Description_spec_desc"
               value={Description.Description_spec_desc}
               onChange={HandleDescriptionChange}
@@ -344,13 +344,13 @@ const CreateProduct = () => {
               aria-describedby="basic-addon1"
             />
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">
               Photo
             </span>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               name="Description_spec_photo"
               value={Description.Description_spec_photo}
               onChange={HandleDescriptionChange}
@@ -362,7 +362,7 @@ const CreateProduct = () => {
           <div className="d-flex container justify-content-end">
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={HandleOnClickDescription}
             >
               Add
@@ -373,16 +373,18 @@ const CreateProduct = () => {
               AddDes.map((e) => {
                 return (
                   <div className="col">
-                    <div class="card p-3">
+                    <div className="card p-3">
                       <img
                         src={e.Description_spec_photo}
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                         style={{ height: "100px" }}
                       />
-                      <div class="card-body">
-                        <h5 class="card-title">{e.Description_spec_title}</h5>
-                        <p class="card-text">{e.Description_spec_desc}</p>
+                      <div className="card-body">
+                        <h5 className="card-title">
+                          {e.Description_spec_title}
+                        </h5>
+                        <p className="card-text">{e.Description_spec_desc}</p>
                       </div>
                     </div>
                   </div>
@@ -406,16 +408,17 @@ const CreateProduct = () => {
           />
         </div>
 
-        <div class="form-check">
+        <div className="form-check">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
             value=""
             id="flexCheckChecked"
+            onChange={(e) => {}}
             onClick={handleBestProductCheckbox}
             checked={isBest ? true : false}
           />
-          <label class="form-check-label" for="flexCheckChecked">
+          <label className="form-check-label" htmlFor="flexCheckChecked">
             IsBest
           </label>
         </div>

@@ -125,7 +125,7 @@ const Myprofile = () => {
                       <div className="col-sm-6">{UserData.username}</div>
                       {isDisabled && (
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="username"
                           value={Crediantial.username}
@@ -145,7 +145,7 @@ const Myprofile = () => {
                       <div className=" col-sm-6">{UserData.email}</div>
                       {isDisabled && (
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="email"
                           placeholder="Email"
@@ -165,7 +165,7 @@ const Myprofile = () => {
                       <div className="col-sm-6">{UserData.mobile}</div>
                       {isDisabled && (
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="mobile"
                           placeholder="Mobile"
@@ -185,7 +185,7 @@ const Myprofile = () => {
                       <div className="col-sm-6">{UserData.address}</div>
                       {isDisabled && (
                         <textarea
-                          class="form-control"
+                          className="form-control"
                           id="exampleFormControlTextarea1"
                           name="address"
                           rows="2"
@@ -198,7 +198,7 @@ const Myprofile = () => {
                   <div className="container row mt-5">
                     <button
                       type="button"
-                      class="btn btn-outline-primary"
+                      className="btn btn-outline-primary"
                       onClick={HandleOnEdit}
                     >
                       {isDisabled ? "Save Changes" : "Edit Profile"}

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import EcomContext from "../../context/EcomContext";
 import { useNavigate, useParams } from "react-router-dom";
 
-const Order = (props) => {
+const Order = () => {
   const Context = useContext(EcomContext);
   const navigate = useNavigate();
   let { id } = useParams();
@@ -48,9 +48,8 @@ const Order = (props) => {
       navigate("/myorders");
     } else {
       // Handle bulk payment for the online payment mode.
-      let quantity = 0;
-      let price = Cart.map((e, index) => {
-        quantity = index + 1;
+
+      let price = Cart.map((e) => {
         return e.price;
       }).reduce((total, current) => {
         return total + current;
@@ -157,19 +156,19 @@ const Order = (props) => {
               <input
                 type="text"
                 name="name"
-                class="form-control"
+                className="form-control"
                 id="floatingInputValue"
                 placeholder="Enter your name"
                 value={Order.name}
                 onChange={handleOnchange}
                 required
               />
-              <label for="floatingInputValue">Your Name</label>
+              <label htmlFor="floatingInputValue">Your Name</label>
             </div>
 
-            <div class="form-floating mb-2">
+            <div className="form-floating mb-2">
               <textarea
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Your address here"
                 id="floatingTextarea"
                 name="address"
@@ -177,13 +176,13 @@ const Order = (props) => {
                 onChange={handleOnchange}
                 required
               ></textarea>
-              <label for="floatingTextarea">Your Address</label>
+              <label htmlFor="floatingTextarea">Your Address</label>
             </div>
 
-            <div class="form-floating mb-2">
+            <div className="form-floating mb-2">
               <input
                 type="number"
-                class="form-control"
+                className="form-control"
                 id="floatingInputValue"
                 placeholder="PIN code"
                 name="PINcode"
@@ -191,12 +190,12 @@ const Order = (props) => {
                 onChange={handleOnchange}
                 required
               />
-              <label for="floatingInputValue">Your PIN Code</label>
+              <label htmlFor="floatingInputValue">Your PIN Code</label>
             </div>
-            <div class="form-floating mb-2">
+            <div className="form-floating mb-2">
               <input
                 type="number"
-                class="form-control"
+                className="form-control"
                 id="floatingInputValue"
                 placeholder="Mobile number"
                 name="Mobile"
@@ -204,12 +203,12 @@ const Order = (props) => {
                 onChange={handleOnchange}
                 required
               />
-              <label for="floatingInputValue">Your Mobile Number</label>
+              <label htmlFor="floatingInputValue">Your Mobile Number</label>
             </div>
-            <div class="form-floating mb-2">
+            <div className="form-floating mb-2">
               <input
                 type="number"
-                class="form-control"
+                className="form-control"
                 id="floatingInputValue"
                 placeholder="Alternate Mobile number"
                 name="AlternateMobile"
@@ -217,40 +216,40 @@ const Order = (props) => {
                 onChange={handleOnchange}
                 required
               />
-              <label for="floatingInputValue">Alternate Mobile No.</label>
+              <label htmlFor="floatingInputValue">Alternate Mobile No.</label>
             </div>
             <div className="container d-flex my-3">
               <big className="mx-2">Payment Options:</big>
 
-              <div class="form-check mx-2 py-1">
+              <div className="form-check mx-2 py-1">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="payment"
                   value="Cash"
                   id="flexRadioDefault1"
                   required
                 />
-                <label class="form-check-label" for="flexRadioDefault1">
+                <label className="form-check-label" htmlFor="flexRadioDefault1">
                   Cash on Delievary
                 </label>
               </div>
-              <div class="form-check mx-2 py-1">
+              <div className="form-check mx-2 py-1">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="payment"
                   value="Card"
                   id="flexRadioDefault1"
                   required
                 />
-                <label class="form-check-label" for="flexRadioDefault1">
+                <label className="form-check-label" htmlFor="flexRadioDefault1">
                   Pay with card
                 </label>
               </div>
             </div>
             <div className=" d-flex justify-content-center">
-              <button type="submit" class="btn btn-outline-primary">
+              <button type="submit" className="btn btn-outline-primary">
                 Place Order
               </button>
             </div>

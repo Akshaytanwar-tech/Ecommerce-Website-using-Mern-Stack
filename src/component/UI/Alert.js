@@ -13,7 +13,7 @@ const Alert = (props) => {
     <>
       {showAlert && (
         <div className="container mt-2 d-flex justify-content-end fixed-top">
-          <div class="alert alert-primary " role="alert">
+          <div className="alert alert-primary " role="alert">
             {props.message} 
           </div>
         </div>

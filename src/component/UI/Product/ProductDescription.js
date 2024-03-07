@@ -38,11 +38,18 @@ const ProductDescription = (props) => {
         </div>
       </div>
       <h1 className="text-center my-4">Product Description</h1>
-      <div className="container overflow-auto border py-3 my-3" style={{ height: "450px" }}>
+      <div
+        className="container overflow-auto border py-3 my-3"
+        style={{ height: "450px" }}
+      >
         {props.product.Description_spec &&
           props.product.Description_spec.map((e, index) => {
             return index % 2 === 0 ? (
-              <div className="card mb-3 mx-4" style={{ maxHeight: "205px" }}>
+              <div
+                className="card mb-3 mx-4"
+                key={e._id}
+                style={{ maxHeight: "205px" }}
+              >
                 <div className="row g-0">
                   <div className="col-md-2">
                     <img
@@ -66,7 +73,11 @@ const ProductDescription = (props) => {
                 </div>
               </div>
             ) : (
-              <div className="card mb-3 mx-4" style={{ maxHeight: "205px" }}>
+              <div
+                className="card mb-3 mx-4"
+                key={e._id}
+                style={{ maxHeight: "205px" }}
+              >
                 <div className="row g-0">
                   <div className="col-md-10">
                     <div className="card-body">

@@ -47,7 +47,7 @@ const CreateCategory = (e) => {
           />
         </div>
         <div className="mb-3">
-          <label for="formGroupExampleInput" className="form-label">
+          <label htmlFor="formGroupExampleInput" className="form-label">
             Please enter photo link
           </label>
           <input
