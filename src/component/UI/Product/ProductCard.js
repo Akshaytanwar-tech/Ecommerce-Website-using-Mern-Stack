@@ -1,36 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  MouseOver,
-  MouseOut,
-  MouseOverImage,
-  MouseOutImage,
-} from "../../helpers/hover";
 
 const ProductCard = (props) => {
   return (
     <>
-      <div className="card border-0 p-4 bg-transparent" style={{}}>
-        <Link
-          to={`/products/Category/${props.product._id}`}
-          className={`card-title text-capitalize text-decoration-none link-dark`}
-          onMouseOver={MouseOver}
-          onMouseOut={MouseOut}
-        >
-          <img
-            src={props.product.photo}
-            className="card-img-top px-2"
-            alt="..."
-            style={{}}
-            onMouseOver={MouseOverImage}
-            onMouseOut={MouseOutImage}
-          />
-          <div className="card-body text-center">
-            {/* <div className="fw-bold">{props.product.Brand_Name}</div> */}
-            <p className="fw-bold text-left">₹{props.product.price}</p>
-            <small>{props.product.Product_Name}</small>
+      <div class="product-card">
+        <div class="card">
+          <Link to={`/products/Category/${props.product._id}`}>
+            <img
+              src={props.product.photo}
+              class="card-img-top"
+              alt="Product"
+            />
+          </Link>
+          <div class="card-body">
+            <Link
+              to={`/products/Category/${props.product._id}`}
+              className={`text-capitalize text-decoration-none link-dark`}
+            >
+              <h5 class="card-title">{props.product.Product_Name}</h5>
+            </Link>
+            <p class="card-text">₹{props.product.price}</p>
+            <a href="/" class="btn btn-primary">
+              Add to Cart
+            </a>
           </div>
-        </Link>
+        </div>
       </div>
     </>
   );

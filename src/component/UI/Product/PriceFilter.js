@@ -1,25 +1,82 @@
 import React from "react";
 
 const PriceFilter = () => {
-  const HandlePriceFilter = (e) => {
-    <div>{e.target.value}</div>;
-  };
   return (
     <>
-      <input
-        type="range"
-        className="form-range"
-        min="0"
-        max="100"
-        id="customRange2"
-        onChange={HandlePriceFilter}
-      />
-      <label htmlFor="customRange2" className="form-label">
-        0
-      </label>
-      <span htmlFor="customRange2" className="top-0 start-155">
-        100
-      </span>
+      <div class="filter-panel text-center">
+        <h5>Filter Products</h5>
+
+        <ul class="list-group list-group-flush mt-3 mb-3">
+          <li class="list-group-item">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Less than ₹5000
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                ₹5000 - ₹10000
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                ₹10000 - ₹15000
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                ₹15000 - ₹20000
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                More than ₹20000
+              </label>
+            </div>
+          </li>
+        </ul>
+        <div className="d-flex justify-content-center">
+          <button class="btn btn-primary">Apply Filters</button>
+        </div>
+      </div>
     </>
   );
 };
