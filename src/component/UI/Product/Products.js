@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import Navbar from "../Navbar";
 import PriceFilter from "./PriceFilter";
-import "./product.css";
 
 const Products = () => {
   const Context = useContext(EcomContext);
