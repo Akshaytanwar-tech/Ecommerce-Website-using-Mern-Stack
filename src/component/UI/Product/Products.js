@@ -25,16 +25,16 @@ const Products = () => {
           <div class="col-md-3">
             <PriceFilter />
           </div>
-          <div class="col-md-9 product-grid">
-            <div className="row">
-              {Product.map((element, index) => {
-                return (
-                  <div class="col-md-4" key={element._id}>
-                    <ProductCard product={element} />
-                  </div>
-                );
-              })}
-            </div>
+          <div className="col-md-9">
+          <div class="row row-cols-sm-2 row-cols-md-4 g-4">
+            {Product.map((element, index) => {
+              return (
+                <div class="col" key={element._id}>
+                  <ProductCard product={element} />
+                </div>
+              );
+            })}
+          </div>
           </div>
         </div>
       </div>
