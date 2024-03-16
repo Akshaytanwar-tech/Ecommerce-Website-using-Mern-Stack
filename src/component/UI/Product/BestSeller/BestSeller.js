@@ -64,7 +64,7 @@ const BestSeller = () => {
                             alt="Product 1"
                             style={{ maxHeight: "120px" }}
                           />
-                          <small className="product-name-trending">
+                          <small>
                             {e.Product_Name.substring(0, 15) + "..."}
                           </small>
                         </Link>
@@ -121,7 +121,7 @@ const BestSeller = () => {
                             style={{ maxHeight: "120px" }}
                           />
                           <div class="card-body">
-                            <h5 class="card-title">{e.Product_Name}</h5>
+                            <h5 class="card-title"> {e.Product_Name.substring(0, 14) + "..."}</h5>
                           </div>
                         </Link>
                       </div>
