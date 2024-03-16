@@ -109,12 +109,115 @@
   text-align: center;
 }
 
-.carousel-item {
+/* Centering product names */
+.product-name {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.product-card-trending-product {
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* Box shadow */
+  transition: box-shadow 0.3s ease;
+  /* Smooth transition */
+}
+
+.product-card-trending-product:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  /* Larger box shadow on hover */
+}
+
+.product-card-trending-product img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.product-card-trending-product h5 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-card-trending-product p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Custom styles for grid layout */
+.trending-product-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .product-card-trending-product {
+    font-size: 14px;
+    /* Reduce font size for smaller screens */
+  }
+}
+
+/* Custom styles for carousel controls */
+.carousel-control-prev-trending,
+.carousel-control-next-trending {
+  color: #fff;
+  /* Text color */
+  font-size: 1.5rem;
+  /* Font size */
+  width: 50px;
+  /* Button width */
+  height: 50px;
+  /* Button height */
+  border: none;
+  /* Remove border */
+  border-radius: 50%;
+  /* Make it round */
+  transition: background-color 0.3s ease;
+  /* Smooth transition */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  position: absolute;
+  /* Position absolutely */
+  top: 50%;
+  /* 50% from the top */
+  transform: translateY(-50%);
+  /* Translate up by half its height */
+  z-index: 1000;
+  /* Ensure it's above other elements */
+}
+
+/* Hover effect */
+.carousel-control-prev-trending:hover,
+.carousel-control-next-trending:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Darker background on hover */
+}
+
+/* Icon positioning */
+.carousel-control-prev-icon-trending,
+.carousel-control-next-icon-trending {
+  margin: 0;
+  /* Remove default margin */
+}
+
+.product-card-trending-product .card-body {
+  text-align: center;
+}
+
+.carousel-item-trending {
   height: 300px;
 }
 
 /* Centering product names */
-.product-name {
+.product-name-trending {
   text-align: center;
   font-size: 1.2rem;
 }
@@ -143,8 +246,8 @@
 }
 
 /* Making carousel control buttons more beautiful */
-.carousel-control-prev,
-.carousel-control-next {
+.carousel-control-prev-trending,
+.carousel-control-next-trending {
   color: black;
   background-color: transparent;
   /* Initially transparent */
@@ -167,26 +270,80 @@
 }
 
 /* Hover effect on carousel control buttons */
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
+.carousel-control-prev-trending:hover,
+.carousel-control-next-trending:hover {
   background-color: rgba(0, 0, 0, 0.1);
   /* Change background color on hover */
 }
 
 /* Change icon color */
-.carousel-control-prev .fas,
-.carousel-control-next .fas {
+.carousel-control-prev-trending .fas,
+.carousel-control-next-trending .fas {
   transition: color 0.3s ease;
   /* Add transition for color */
 }
 
 /* Change icon color on hover */
-.carousel-control-prev:hover .fas,
-.carousel-control-next:hover .fas {
+.carousel-control-prev-trending:hover .fas,
+.carousel-control-next-trending:hover .fas {
   color: blue !important;
   /* Change icon color to blue on hover */
 }
 
-.carousel-control-next {
+.carousel-control-next-trending {
   right: 0;
+}
+
+/* css for the trending section mobile view */
+.background-trending-mob {
+  background: rgba(255, 255, 255, 0.9);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card-trending-mob {
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.product-card-trending-mob img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card-trending-mob:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.product-card-trending-mob:hover img {
+  transform: scale(1.05);
+}
+
+.product-card-trending-mob .card-body {
+  padding: 20px;
+}
+
+.product-card-trending-mob .card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.product-card-trending-mob .card-text {
+  color: #777;
+}
+
+.product-card-trending-mob .btn {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-card-trending-mob .btn:hover {
+  transform: translateY(-3px);
 }

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import EcomContext from "../../../../context/EcomContext";
 import { Link } from "react-router-dom";
-import { MouseOver, MouseOut } from "../../../helpers/hover";
 
 const BestSeller = () => {
   const context = useContext(EcomContext);
@@ -13,103 +12,126 @@ const BestSeller = () => {
 
   return (
     <>
-      <h1 className="container text-center my-4">Our Best Products</h1>
-      <div
-        id="carouselExample"
-        className="carousel slide border border-white bg-white container"
-      >
-        <div className="carousel-inner" style={{ maxHeight: "200px" }}>
-          <div className="carousel-item  active">
-            <div className="container d-flex justify-content-center">
-              {BestProducts.slice(0, 4).map((e) => {
-                return (
-                  <div className="mx-3 my-4 border" key={e._id}>
-                    <img src={e.photo} alt="" style={{ maxHeight: "120px" }} />
-                    <div className="text-center">
-                      <Link
-                        to={`/products/Category/${e._id}`}
-                        onMouseOver={MouseOver}
-                        onMouseOut={MouseOut}
-                        className="text-decoration-none link-dark"
-                      >
-                        <small>{e.Product_Name.substring(0, 15) + "..."}</small>
-                      </Link>
-                      <br />
-                      <small>₹{e.price}</small>
+      <div class="container">
+        <h2 class="text-center mb-4 pt-5">Trending Products</h2>
+
+        <div
+          id="productCarousel"
+          class="carousel slide d-none d-md-block"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item carousel-item-trending active">
+              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 py-3">
+                {BestProducts.slice(0, 5).map((e) => {
+                  return (
+                    <div class="col">
+                      <div class="product-card product-card-trending-product">
+                        <Link
+                          to={`/products/Category/${e._id}`}
+                          className="text-decoration-none link-dark"
+                        >
+                          <img
+                            src={e.photo}
+                            class="img-fluid"
+                            alt="Product 1"
+                            style={{ maxHeight: "120px" }}
+                          />
+                          <small>
+                            {e.Product_Name.substring(0, 15) + "..."}
+                          </small>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+            </div>
+
+            <div class="carousel-item carousel-item-trending">
+              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 py-3">
+                {BestProducts.slice(5, 10).map((e) => {
+                  return (
+                    <div class="col">
+                      <div class="product-card product-card-trending-product">
+                        <Link
+                          to={`/products/Category/${e._id}`}
+                          className="text-decoration-none link-dark"
+                        >
+                          <img
+                            src={e.photo}
+                            class="img-fluid"
+                            alt="Product 1"
+                            style={{ maxHeight: "120px" }}
+                          />
+                          <small className="product-name-trending">
+                            {e.Product_Name.substring(0, 15) + "..."}
+                          </small>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-          <div className="carousel-item">
-            <div className="container d-flex justify-content-center">
-              {BestProducts.slice(4, 8).map((e) => {
-                return (
-                  <div className="my-4 mx-3 border" key={e._id}>
-                    <img src={e.photo} alt="" style={{ maxHeight: "120px" }} />
-                    <div className="text-center">
-                      <Link
-                        to={`/products/Category/${e._id}`}
-                        onMouseOver={MouseOver}
-                        onMouseOut={MouseOut}
-                        className="text-decoration-none link-dark"
-                      >
-                        <small>{e.Product_Name.substring(0, 15) + "..."}</small>
-                      </Link>
-                      <br />
-                      <small>₹{e.price}</small>
+
+          <button
+            class="carousel-control-prev carousel-control-prev-trending"
+            type="button"
+            data-bs-target="#productCarousel"
+            data-bs-slide="prev"
+          >
+            <span
+              class="carousel-control-prev-icon carousel-control-prev-icon-trending"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next carousel-control-next-trending"
+            type="button"
+            data-bs-target="#productCarousel"
+            data-bs-slide="next"
+          >
+            <span
+              class="carousel-control-next-icon carousel-control-next-icon-trending"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div class="trending-product-card-grid d-md-none">
+          <div class="background-trending-mob">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-4">
+                {BestProducts.map((e) => {
+                  return (
+                    <div class="col-6 col-md-6">
+                      <div class="product-card-trending-mob">
+                        <Link
+                          to={`/products/Category/${e._id}`}
+                          className="text-decoration-none link-dark"
+                        >
+                          <img
+                            src={e.photo}
+                            class="card-img-top"
+                            alt="Product"
+                            style={{ maxHeight: "120px" }}
+                          />
+                          <div class="card-body">
+                            <h5 class="card-title">{e.Product_Name}</h5>
+                          </div>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="carousel-item">
-            <div className="container d-flex justify-content-center">
-              {BestProducts.slice(4, 8).map((e) => {
-                return (
-                  <div className="my-4 mx-3 border" key={e._id}>
-                    <img src={e.photo} alt="" style={{ maxHeight: "120px" }} />
-                    <div className="text-center">
-                      <Link
-                        to={`/products/Category/${e._id}`}
-                        onMouseOver={MouseOver}
-                        onMouseOut={MouseOut}
-                        className="text-decoration-none link-dark"
-                      >
-                        <small>{e.Product_Name.substring(0, 15) + "..."}</small>
-                      </Link>
-                      <br />
-                      <small>₹{e.price}</small>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-        <button
-          className="carousel-control-prev bg-dark"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next bg-dark"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
       </div>
     </>
   );
