@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EcomContext from "../../context/EcomContext";
+import "../helpers/nav.css";
 
 const Navbar = () => {
   const Context = useContext(EcomContext);
@@ -34,8 +35,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="sticky-top">
-        <nav
+      {/* <div className="sticky-top"> 
+       <nav
           className="navbar navbar-expand-lg"
           style={{ background: "#00061a", fontFamily: "Serif" }}
         >
@@ -255,6 +256,168 @@ const Navbar = () => {
                       </ul>
                     </div>
                   )}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div> */}
+      <div className="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <Link class="navbar-brand" to="/">
+              <i class="fas fa-store"></i> ShopKart
+            </Link>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <Link class="nav-link" to="/">
+                    <i class="fas fa-home"></i> Home
+                  </Link>
+                </li>
+                <li class="nav-item dropdown">
+                  <Link
+                    class="nav-link dropdown-toggle"
+                    id="navbarDropdownShop"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="fas fa-shopping-cart"></i> Shop
+                  </Link>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownShop"
+                  >
+                    {Category.map((e) => {
+                      return (
+                        <li>
+                          <Link
+                            to={`/products/${e._id}`}
+                            key={e._id}
+                            className="dropdown-item"
+                            style={{ cursor: "pointer" }}
+                          >
+                            {e.name}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <Link class="nav-link" to="/about">
+                    <i class="fas fa-info-circle"></i> About
+                  </Link>
+                </li>
+              </ul>
+
+              <form class="d-flex mx-auto">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  name="searched"
+                  value={SearchStr.searched}
+                  onChange={HandleSearchChange}
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button
+                  class="btn btn-outline-success"
+                  onClick={HandleSearch}
+                  type="submit"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {UserData.role === 1 ? (
+                  <li class="nav-item">
+                    <Link
+                      class="nav-link"
+                      to="/admin/dashboard"
+                      target="_blank"
+                    >
+                      <i class="fa-solid fa-gauge-high"></i> Dashboard
+                    </Link>
+                  </li>
+                ) : (
+                  ""
+                )}
+                <li class="nav-item">
+                  <Link class="nav-link" to="/cart">
+                    <i class="fa-solid fa-cart-shopping">
+                      <span className="position-absolute top-1 start-101 translate-middle badge rounded-pill bg-danger">
+                        {Cart.length}
+                      </span>
+                    </i>
+                    Cart
+                  </Link>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownProfile"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="fas fa-user"></i>
+                  </a>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="navbarDropdownProfile"
+                  >
+                    {!localStorage.getItem("token") ? (
+                      <>
+                        <div className="d-flex justify-content-center my-4">
+                          <Link to="/signin">
+                            <button type="button" className="btn btn-primary">
+                              Log In
+                            </button>
+                          </Link>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <li>
+                          <Link class="dropdown-item" to="/myprofile">
+                            My profile
+                          </Link>
+                        </li>
+                        <li>
+                          <Link class="dropdown-item" to="/myorders">
+                            My orders
+                          </Link>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider" />
+                        </li>
+                        <li className="d-flex justify-content-center">
+                          <button
+                            type="button"
+                            className="btn btn-primary "
+                            onClick={HandleLogout}
+                          >
+                            Log Out
+                          </button>
+                        </li>
+                      </>
+                    )}
+                  </ul>
                 </li>
               </ul>
             </div>

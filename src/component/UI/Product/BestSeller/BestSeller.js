@@ -120,9 +120,11 @@ const BestSeller = () => {
                             alt="Product"
                             style={{ maxHeight: "120px" }}
                           />
-                          <div class="card-body">
-                            <h5 class="card-title"> {e.Product_Name.substring(0, 14) + "..."}</h5>
-                          </div>
+
+                          <small class="">
+                            {" "}
+                            {e.Product_Name.substring(0, 14) + "..."}
+                          </small>
                         </Link>
                       </div>
                     </div>
