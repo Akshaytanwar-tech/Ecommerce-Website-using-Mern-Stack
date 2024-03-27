@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EcomContext from "../../context/EcomContext";
-import "../helpers/nav.css";
+
 
 const Navbar = () => {
   const Context = useContext(EcomContext);

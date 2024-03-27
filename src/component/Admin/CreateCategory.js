@@ -5,15 +5,24 @@ import Alert from "../UI/Alert";
 const CreateCategory = (e) => {
   const context = useContext(EcomContext);
   const { CreateCategory } = context;
-  const [category, setCategoy] = useState({ name: "", photo: "" });
+  const [category, setCategoy] = useState({ name: "", photo: null });
+
   //State to handle Alert
   const [AlertTriggered, setAlertTriggered] = useState("");
+
   const onChange = (e) => {
-    setCategoy({ ...category, [e.target.name]: e.target.value });
+    const value =
+      e.target.name === "photo" ? e.target.files[0] : e.target.value;
+
+    setCategoy({ ...category, [e.target.name]: value });
   };
 
-  const onSubmit = () => {
-    CreateCategory(category.name, category.photo)
+  const onSubmit = (e) => {
+    let formData = new FormData();
+    formData.append("name", category.name);
+    formData.append("photo", category.photo);
+
+    CreateCategory(formData)
       .then((json) => {
         setAlertTriggered(json);
       })
@@ -22,7 +31,7 @@ const CreateCategory = (e) => {
           setAlertTriggered("");
         }, 5000);
       });
-    setCategoy({ name: "", photo: "" });
+    setCategoy({ name: "", photo: null });
   };
 
   return (
@@ -46,21 +55,17 @@ const CreateCategory = (e) => {
             required
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="formGroupExampleInput" className="form-label">
-            Please enter photo link
-          </label>
+        <div className="input-group mb-3">
           <input
-            type="text"
-            className="form-control"
-            id="formGroupExampleInput"
-            placeholder="Example input placeholder"
+            type="file"
             name="photo"
+            className="form-control"
+            id="inputGroupFile01"
             onChange={onChange}
-            value={category.photo}
-            required
+            accept="image/*"
           />
         </div>
+
         <button type="submit" onClick={onSubmit} className="btn btn-primary">
           Submit
         </button>

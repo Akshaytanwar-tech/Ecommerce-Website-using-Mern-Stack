@@ -1,0 +1,29 @@
+.circular-loading-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .progress-ring {
+    animation: rotate 2s linear infinite;
+    transform-origin: 50% 50%;
+  }
+  
+  .progress-ring-circle {
+    stroke: #00bcd4; /* Change color as per your preference */
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+  
+  .progress-text {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #00bcd4; /* Change color as per your preference */
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }

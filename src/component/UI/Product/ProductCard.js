@@ -21,9 +21,7 @@ const ProductCard = (props) => {
               <h5 class="card-title">{props.product.Product_Name}</h5>
             </Link>
             <p class="card-text">₹{props.product.price}</p>
-            <a href="/" class="btn btn-primary">
-              Add to Cart
-            </a>
+        
           </div>
         </div>
       </div>

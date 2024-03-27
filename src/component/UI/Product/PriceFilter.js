@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 const PriceFilter = () => {
+  const [filterValues, setFilterValues] = useState([
+    [0, 10000],
+    [10000, 20000],
+    [20000, 30000],
+    [30000, 40000],
+    [40000],
+  ]);
   return (
     <>
       <div class="filter-panel text-center">
@@ -16,7 +23,7 @@ const PriceFilter = () => {
                 id="flexRadioDefault1"
               />
               <label class="form-check-label" for="flexRadioDefault1">
-                Less than ₹5000
+                Less than ₹10000
               </label>
             </div>
           </li>
@@ -29,7 +36,7 @@ const PriceFilter = () => {
                 id="flexRadioDefault1"
               />
               <label class="form-check-label" for="flexRadioDefault1">
-                ₹5000 - ₹10000
+                ₹10000 - ₹20000
               </label>
             </div>
           </li>
@@ -42,7 +49,7 @@ const PriceFilter = () => {
                 id="flexRadioDefault1"
               />
               <label class="form-check-label" for="flexRadioDefault1">
-                ₹10000 - ₹15000
+                ₹20000 - ₹30000
               </label>
             </div>
           </li>
@@ -55,7 +62,7 @@ const PriceFilter = () => {
                 id="flexRadioDefault1"
               />
               <label class="form-check-label" for="flexRadioDefault1">
-                ₹15000 - ₹20000
+                ₹30000 - ₹40000
               </label>
             </div>
           </li>
@@ -68,7 +75,7 @@ const PriceFilter = () => {
                 id="flexRadioDefault1"
               />
               <label class="form-check-label" for="flexRadioDefault1">
-                More than ₹20000
+                More than ₹40000
               </label>
             </div>
           </li>
