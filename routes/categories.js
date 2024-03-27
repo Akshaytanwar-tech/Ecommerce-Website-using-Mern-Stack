@@ -3,22 +3,36 @@ const express = require("express");
 const router = express.Router();
 const Category = require("../models/category");
 const Product = require("../models/product");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+const cloudinary = require("cloudinary").v2;
 
 // Api-1 For category creation
-router.post("/category", async (req, res) => {
+router.post("/category", upload.single("photo"), async (req, res) => {
   try {
-    const { name, photo } = req.body;
+    const { name } = req.body;
+
+    //Checking if the category is already exists.
     let catergory = await Category.findOne({ name });
     if (catergory) {
       return res.status(400).json("sorry category is already exists");
     }
-    // Create category in the database
-    catergory = await Category.create({
-      name: name,
-      photo: photo,
-    });
 
-    res.json("category is created");
+    cloudinary.uploader.upload(req.file.path, async (error, result) => {
+      if (error) {
+        return res.status(500).json({ error: "Error uploading file" });
+      }
+      // File uploaded successfully, return Cloudinary URL
+      const category = await Category.create({
+        name: name,
+        photo: result.secure_url,
+      });
+      if (category) {
+        res.json("category is created");
+      } else {
+        return res.status(500).json({ error: "Internal error" });
+      }
+    });
   } catch (error) {
     console.log(error);
   }

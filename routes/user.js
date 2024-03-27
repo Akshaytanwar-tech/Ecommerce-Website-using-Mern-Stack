@@ -7,6 +7,7 @@ var bcrypt = require("bcryptjs");
 const fetchuser = require("../middleware/fetchuser");
 const { body, validationResult } = require("express-validator");
 let success = true;
+const cloudinary = require("cloudinary").v2;
 
 // Auth Api-1 for sign up a user
 
@@ -62,9 +63,7 @@ router.post(
       const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
       success = true;
       res.json({ token, success });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 );
 
@@ -262,4 +261,13 @@ router.put("/editprofile", fetchuser, async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+router.post("/changeProfile", (req, res) => {
+  const { photo } = req.files;
+  let imageURL = "";
+  cloudinary.uploader.upload(photo.tempFilePath, (err, resu) => {
+    imageURL = resu;
+  });
+  res.json({ image: imageURL });
 });

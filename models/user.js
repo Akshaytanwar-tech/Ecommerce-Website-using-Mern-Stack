@@ -16,7 +16,7 @@ const userSchema = new Schema({
     required: true,
   },
   photo: {
-    type: String,
+    type: Buffer,
   },
   address: {
     type: String,

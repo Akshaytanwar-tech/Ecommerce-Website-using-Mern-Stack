@@ -3,6 +3,10 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/product");
 const { body, validationResult } = require("express-validator");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+const cloudinary = require("cloudinary").v2;
+
 
 //Api 1:- To create a product with its category.
 router.post(
