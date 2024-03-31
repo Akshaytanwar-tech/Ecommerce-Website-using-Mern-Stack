@@ -1,88 +1,98 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const PriceFilter = () => {
-  const [filterValues, setFilterValues] = useState([
-    [0, 10000],
-    [10000, 20000],
-    [20000, 30000],
-    [30000, 40000],
-    [40000],
-  ]);
+const PriceFilter = ({ CategoryId }) => {
+  const navigate = useNavigate();
+
+  const HandleFilter = (e) => {
+    let price = e.target.value;
+    navigate(`/products/${CategoryId}/Filter/${price}`);
+  };
   return (
     <>
-      <div class="filter-panel text-center">
+      <div className="filter-panel text-center">
         <h5>Filter Products</h5>
 
-        <ul class="list-group list-group-flush mt-3 mb-3">
-          <li class="list-group-item">
-            <div class="form-check">
+        <ul className="list-group list-group-flush mt-3 mb-3">
+          <li className="list-group-item">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
+                value={10000}
+                onClick={HandleFilter}
               />
-              <label class="form-check-label" for="flexRadioDefault1">
-                Less than ₹10000
+              <label className="form-check-label" htmlFor="flexRadioDefault1">
+                Below ₹10000
               </label>
             </div>
           </li>
-          <li class="list-group-item">
-            <div class="form-check">
+          <li className="list-group-item">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
+                value={20000}
+                onClick={HandleFilter}
               />
-              <label class="form-check-label" for="flexRadioDefault1">
-                ₹10000 - ₹20000
+              <label className="form-check-label" htmlFor="flexRadioDefault1">
+                Below ₹20000
               </label>
             </div>
           </li>
-          <li class="list-group-item">
-            <div class="form-check">
+          <li className="list-group-item">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
+                value={30000}
+                onClick={HandleFilter}
               />
-              <label class="form-check-label" for="flexRadioDefault1">
-                ₹20000 - ₹30000
+              <label className="form-check-label" htmlFor="flexRadioDefault1">
+                Below ₹30000
               </label>
             </div>
           </li>
-          <li class="list-group-item">
-            <div class="form-check">
+          <li className="list-group-item">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
+                value={40000}
+                onClick={HandleFilter}
               />
-              <label class="form-check-label" for="flexRadioDefault1">
-                ₹30000 - ₹40000
+              <label className="form-check-label" htmlFor="flexRadioDefault1">
+                Below ₹40000
               </label>
             </div>
           </li>
-          <li class="list-group-item">
-            <div class="form-check">
+          <li className="list-group-item">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
+                value={50000}
+                onClick={HandleFilter}
               />
-              <label class="form-check-label" for="flexRadioDefault1">
-                More than ₹40000
+              <label className="form-check-label" htmlFor="flexRadioDefault1">
+                Below ₹50000
               </label>
             </div>
           </li>
         </ul>
-        <div className="d-flex justify-content-center">
-          <button class="btn btn-primary">Apply Filters</button>
-        </div>
+        {/* <div className="d-flex justify-content-center">
+          <button className="btn btn-primary">Apply Filters</button>
+        </div> */}
       </div>
     </>
   );

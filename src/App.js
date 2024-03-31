@@ -61,6 +61,11 @@ function App() {
               exact
             />
             <Route
+              path="/products/:id/Filter/:key"
+              element={<Products />}
+              exact
+            />
+            <Route
               path="/ProductSearch/:key"
               element={<ProductSearch />}
               exact

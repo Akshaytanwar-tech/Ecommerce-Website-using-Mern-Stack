@@ -65,7 +65,7 @@ const Cart = () => {
                             <div>
                               <span>Qty:</span>
 
-                              <span
+                              <button
                                 className="border border-dark mx-1 px-2 py-1 bg-light rounded-circle fw-bold"
                                 onClick={() => {
                                   HandleDecreaseQty(e.product, e.Quantity - 1);
@@ -73,11 +73,11 @@ const Cart = () => {
                                 style={{ cursor: "pointer" }}
                               >
                                 -
-                              </span>
+                              </button>
                               <span className="border px-2 py-1">
                                 {e.Quantity}
                               </span>
-                              <span
+                              <button
                                 className="border border-dark mx-1 px-2 py-1 rounded-circle fw-bold"
                                 onClick={() => {
                                   HandleIncreaseQty(e.product, e.Quantity + 1);
@@ -85,7 +85,7 @@ const Cart = () => {
                                 style={{ cursor: "pointer" }}
                               >
                                 +
-                              </span>
+                              </button>
                             </div>
                             <div className="container py-2">
                               <button

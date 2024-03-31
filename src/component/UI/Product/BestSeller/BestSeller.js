@@ -12,28 +12,28 @@ const BestSeller = () => {
 
   return (
     <>
-      <div class="container">
-        <h2 class="text-center mb-4 pt-5">Trending Products</h2>
+      <div className="container">
+        <h2 className="text-center mb-4 pt-5">Trending Products</h2>
 
         <div
           id="productCarousel"
-          class="carousel slide d-none d-md-block"
+          className="carousel slide d-none d-md-block"
           data-bs-ride="carousel"
         >
-          <div class="carousel-inner">
-            <div class="carousel-item carousel-item-trending active">
-              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 py-3">
-                {BestProducts.slice(0, 5).map((e) => {
+          <div className="carousel-inner">
+            <div className="carousel-item carousel-item-trending active">
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 py-3">
+                {BestProducts.slice(0, 5).map((e, i) => {
                   return (
-                    <div class="col">
-                      <div class="product-card product-card-trending-product">
+                    <div className="col" key={i}>
+                      <div className="product-card product-card-trending-product">
                         <Link
                           to={`/products/Category/${e._id}`}
                           className="text-decoration-none link-dark"
                         >
                           <img
                             src={e.photo}
-                            class="img-fluid"
+                            className="img-fluid"
                             alt="Product 1"
                             style={{ maxHeight: "120px" }}
                           />
@@ -48,19 +48,19 @@ const BestSeller = () => {
               </div>
             </div>
 
-            <div class="carousel-item carousel-item-trending">
-              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 py-3">
-                {BestProducts.slice(5, 10).map((e) => {
+            <div className="carousel-item carousel-item-trending">
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 py-3">
+                {BestProducts.slice(5, 10).map((e, i) => {
                   return (
-                    <div class="col">
-                      <div class="product-card product-card-trending-product">
+                    <div className="col" key={i}>
+                      <div className="product-card product-card-trending-product">
                         <Link
                           to={`/products/Category/${e._id}`}
                           className="text-decoration-none link-dark"
                         >
                           <img
                             src={e.photo}
-                            class="img-fluid"
+                            className="img-fluid"
                             alt="Product 1"
                             style={{ maxHeight: "120px" }}
                           />
@@ -77,51 +77,51 @@ const BestSeller = () => {
           </div>
 
           <button
-            class="carousel-control-prev carousel-control-prev-trending"
+            className="carousel-control-prev carousel-control-prev-trending"
             type="button"
             data-bs-target="#productCarousel"
             data-bs-slide="prev"
           >
             <span
-              class="carousel-control-prev-icon carousel-control-prev-icon-trending"
+              className="carousel-control-prev-icon carousel-control-prev-icon-trending"
               aria-hidden="true"
             ></span>
-            <span class="visually-hidden">Previous</span>
+            <span className="visually-hidden">Previous</span>
           </button>
           <button
-            class="carousel-control-next carousel-control-next-trending"
+            className="carousel-control-next carousel-control-next-trending"
             type="button"
             data-bs-target="#productCarousel"
             data-bs-slide="next"
           >
             <span
-              class="carousel-control-next-icon carousel-control-next-icon-trending"
+              className="carousel-control-next-icon carousel-control-next-icon-trending"
               aria-hidden="true"
             ></span>
-            <span class="visually-hidden">Next</span>
+            <span className="visually-hidden">Next</span>
           </button>
         </div>
 
-        <div class="trending-product-card-grid d-md-none">
-          <div class="background-trending-mob">
-            <div class="container">
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-4">
-                {BestProducts.map((e) => {
+        <div className="trending-product-card-grid d-md-none">
+          <div className="background-trending-mob">
+            <div className="container">
+              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-4">
+                {BestProducts.map((e, i) => {
                   return (
-                    <div class="col-6 col-md-6">
-                      <div class="product-card-trending-mob">
+                    <div className="col-6 col-md-6" key={i}>
+                      <div className="product-card-trending-mob">
                         <Link
                           to={`/products/Category/${e._id}`}
                           className="text-decoration-none link-dark"
                         >
                           <img
                             src={e.photo}
-                            class="card-img-top"
+                            className="card-img-top"
                             alt="Product"
                             style={{ maxHeight: "120px" }}
                           />
 
-                          <small class="">
+                          <small className="">
                             {" "}
                             {e.Product_Name.substring(0, 14) + "..."}
                           </small>

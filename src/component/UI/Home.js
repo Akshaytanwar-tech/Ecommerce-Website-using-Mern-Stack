@@ -8,6 +8,7 @@ import Footar from "./Footar";
 import EcomContext from "../../context/EcomContext";
 import Navbar from "./Navbar";
 import BestSeller from "./Product/BestSeller/BestSeller";
+import Loading from "./Loading";
 
 const Home = () => {
   const Context = useContext(EcomContext);
@@ -23,7 +24,12 @@ const Home = () => {
       <Navbar />
       <div className="bg-light">
         <Advertisementpic pic={pic} pic1={pic1} pic2={pic2} />
-        <Categories header={"Shop by Categories"} data={Category} />
+
+        {Category ? (
+          <Categories header={"Shop by Categories"} data={Category} />
+        ) : (
+          <Loading />
+        )}
         <BestSeller />
       </div>
       <Footar />

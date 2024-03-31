@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EcomContext from "../../context/EcomContext";
 
-
 const Navbar = () => {
   const Context = useContext(EcomContext);
   const navigate = useNavigate();
@@ -263,13 +262,13 @@ const Navbar = () => {
         </nav>
       </div> */}
       <div className="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
-            <Link class="navbar-brand" to="/">
-              <i class="fas fa-store"></i> ShopKart
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
+            <Link className="navbar-brand" to="/">
+              <i className="fas fa-store"></i> ShopKart
             </Link>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -277,35 +276,34 @@ const Navbar = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Link class="nav-link" to="/">
-                    <i class="fas fa-home"></i> Home
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    <i className="fas fa-home"></i> Home
                   </Link>
                 </li>
-                <li class="nav-item dropdown">
+                <li className="nav-item dropdown">
                   <Link
-                    class="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle"
                     id="navbarDropdownShop"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <i class="fas fa-shopping-cart"></i> Shop
+                    <i className="fas fa-shopping-cart"></i> Shop
                   </Link>
                   <ul
-                    class="dropdown-menu"
+                    className="dropdown-menu"
                     aria-labelledby="navbarDropdownShop"
                   >
                     {Category.map((e) => {
                       return (
-                        <li>
+                        <li key={e._id}>
                           <Link
                             to={`/products/${e._id}`}
-                            key={e._id}
                             className="dropdown-item"
                             style={{ cursor: "pointer" }}
                           >
@@ -316,16 +314,16 @@ const Navbar = () => {
                     })}
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/about">
-                    <i class="fas fa-info-circle"></i> About
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">
+                    <i className="fas fa-info-circle"></i> About
                   </Link>
                 </li>
               </ul>
 
-              <form class="d-flex mx-auto">
+              <form className="d-flex mx-auto">
                 <input
-                  class="form-control me-2"
+                  className="form-control me-2"
                   type="search"
                   name="searched"
                   value={SearchStr.searched}
@@ -334,31 +332,31 @@ const Navbar = () => {
                   aria-label="Search"
                 />
                 <button
-                  class="btn btn-outline-success"
+                  className="btn btn-outline-success"
                   onClick={HandleSearch}
                   type="submit"
                 >
-                  <i class="fas fa-search"></i>
+                  <i className="fas fa-search"></i>
                 </button>
               </form>
 
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 {UserData.role === 1 ? (
-                  <li class="nav-item">
+                  <li className="nav-item">
                     <Link
-                      class="nav-link"
+                      className="nav-link"
                       to="/admin/dashboard"
                       target="_blank"
                     >
-                      <i class="fa-solid fa-gauge-high"></i> Dashboard
+                      <i className="fa-solid fa-gauge-high"></i> Dashboard
                     </Link>
                   </li>
                 ) : (
                   ""
                 )}
-                <li class="nav-item">
-                  <Link class="nav-link" to="/cart">
-                    <i class="fa-solid fa-cart-shopping">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/cart">
+                    <i className="fa-solid fa-cart-shopping">
                       <span className="position-absolute top-1 start-101 translate-middle badge rounded-pill bg-danger">
                         {Cart.length}
                       </span>
@@ -366,19 +364,19 @@ const Navbar = () => {
                     Cart
                   </Link>
                 </li>
-                <li class="nav-item dropdown">
+                <li className="nav-item dropdown">
                   <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
+                    className="nav-link dropdown-toggle"
+                    href="/"
                     id="navbarDropdownProfile"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <i class="fas fa-user"></i>
+                    <i className="fas fa-user"></i>
                   </a>
                   <ul
-                    class="dropdown-menu dropdown-menu-end"
+                    className="dropdown-menu dropdown-menu-end"
                     aria-labelledby="navbarDropdownProfile"
                   >
                     {!localStorage.getItem("token") ? (
@@ -394,17 +392,17 @@ const Navbar = () => {
                     ) : (
                       <>
                         <li>
-                          <Link class="dropdown-item" to="/myprofile">
+                          <Link className="dropdown-item" to="/myprofile">
                             My profile
                           </Link>
                         </li>
                         <li>
-                          <Link class="dropdown-item" to="/myorders">
+                          <Link className="dropdown-item" to="/myorders">
                             My orders
                           </Link>
                         </li>
                         <li>
-                          <hr class="dropdown-divider" />
+                          <hr className="dropdown-divider" />
                         </li>
                         <li className="d-flex justify-content-center">
                           <button
