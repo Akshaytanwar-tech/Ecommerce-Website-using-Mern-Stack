@@ -18,7 +18,7 @@ const Products = () => {
 
   return (
     <>
-      <Navbar title="Dlipkart" />
+      <Navbar />
 
       <div className="container">
         <div className="row mt-3">
@@ -28,7 +28,7 @@ const Products = () => {
           <div className="col-md-9">
             <div className="row row-cols-sm-2 row-cols-md-4 g-4">
               {!key
-                ? Product.map((element, index) => {
+                ? Product.map((element) => {
                     return (
                       <div className="col" key={element._id}>
                         <ProductCard product={element} />
@@ -44,6 +44,37 @@ const Products = () => {
                       </div>
                     );
                   })}
+            </div>
+            <div className="container d-flex justify-content-center">
+              <nav aria-label="Page navigation example">
+                <ul className="pagination">
+                  <li className="page-item">
+                    <a className="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      1
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      2
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      3
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

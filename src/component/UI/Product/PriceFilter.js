@@ -90,9 +90,6 @@ const PriceFilter = ({ CategoryId }) => {
             </div>
           </li>
         </ul>
-        {/* <div className="d-flex justify-content-center">
-          <button className="btn btn-primary">Apply Filters</button>
-        </div> */}
       </div>
     </>
   );

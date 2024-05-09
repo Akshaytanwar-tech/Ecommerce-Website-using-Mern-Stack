@@ -30,6 +30,7 @@ const Home = () => {
         ) : (
           <Loading />
         )}
+        
         <BestSeller />
       </div>
       <Footar />

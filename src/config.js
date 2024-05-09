@@ -1,5 +1,6 @@
 const config = {
-  APIUrl: "https://ecommerce-website-using-mern-stack.onrender.com",
+  // APIUrl: "https://ecommerce-website-using-mern-stack.onrender.com",
+  APIUrl: "https://backend--digishopakshay.netlify.app/",
   // APIUrl: "http://localhost:5000",
 };
 
