@@ -9,12 +9,16 @@ require("dotenv").config();
 connectToMongo();
 cloudnayFun();
 
-
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
+app.use(cors(corsOptions));
 
 // Using routes to the server.
 app.use("/api/auth", require("./routes/user"));
