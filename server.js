@@ -26,7 +26,9 @@ app.use("/api/Category", require("./routes/categories"));
 app.use("/api/Product", require("./routes/product"));
 app.use("/api/Order", require("./routes/order"));
 app.use("/api/checkout", require("./routes/checkout"));
-
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
