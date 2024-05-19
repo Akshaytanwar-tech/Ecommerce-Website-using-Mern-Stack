@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import EcomContext from "../../../../context/EcomContext";
 import { Link } from "react-router-dom";
+import config from "../../../../config";
 
 const BestSeller = () => {
   const context = useContext(EcomContext);
@@ -13,7 +14,12 @@ const BestSeller = () => {
   return (
     <>
       <div className="container">
-        <h2 className="text-center mb-4 pt-5">Trending Products</h2>
+        <h1
+          className="text-center my-5"
+          style={{ fontFamily: config.fontFamily }}
+        >
+          Trending Products
+        </h1>
 
         <div
           id="productCarousel"
@@ -77,27 +83,21 @@ const BestSeller = () => {
           </div>
 
           <button
-            className="carousel-control-prev carousel-control-prev-trending"
+            className="carousel-control-prev carousel-control-prev-trending border"
             type="button"
             data-bs-target="#productCarousel"
             data-bs-slide="prev"
           >
-            <span
-              className="carousel-control-prev-icon carousel-control-prev-icon-trending"
-              aria-hidden="true"
-            ></span>
+            <i class="fa-solid fa-left-long"></i>
             <span className="visually-hidden">Previous</span>
           </button>
           <button
-            className="carousel-control-next carousel-control-next-trending"
+            className="carousel-control-next carousel-control-next-trending border"
             type="button"
             data-bs-target="#productCarousel"
             data-bs-slide="next"
           >
-            <span
-              className="carousel-control-next-icon carousel-control-next-icon-trending"
-              aria-hidden="true"
-            ></span>
+            <i class="fa-solid fa-right-long"></i>
             <span className="visually-hidden">Next</span>
           </button>
         </div>

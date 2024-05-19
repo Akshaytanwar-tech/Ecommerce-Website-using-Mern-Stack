@@ -1,10 +1,14 @@
 import React from "react";
 import CategoryCard from "./CategoryCard";
+import config from "../../../config";
 
 const Categories = (props) => {
   return (
     <>
-      <div className="h1 my-4 text-center" style={{ fontFamily: "Cursive" }}>
+      <div
+        className="h1 my-5 text-center"
+        style={{ fontFamily: config.fontFamily }}
+      >
         {props.header}
       </div>
 
