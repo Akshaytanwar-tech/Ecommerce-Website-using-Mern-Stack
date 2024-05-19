@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import EcomContext from "../../context/EcomContext";
+import isAdmin from "../helpers/Auth/isAdmin";
+import Alert from "../UI/Alert";
 
 const Dashboard = () => {
   const context = useContext(EcomContext);
+  const navigate = useNavigate();
   const {
     Category,
     FetchCategories,
@@ -14,6 +16,10 @@ const Dashboard = () => {
     users,
   } = context;
   useEffect(() => {
+    if (!isAdmin()) {
+      <Alert message={"please sign in as admin first"} />;
+      navigate("/signin");
+    }
     FetchCategories();
     FetchallProducts();
     fetchalluser();

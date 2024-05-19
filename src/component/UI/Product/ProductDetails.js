@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import EcomContext from "../../../context/EcomContext";
 import Navbar from "../Navbar";
 import ProductDescription from "./ProductDescription";
-
+import isUser from "../../helpers/Auth/isUser";
 const ProductDetails = () => {
   const Context = useContext(EcomContext);
   const navigate = useNavigate();
@@ -14,13 +14,22 @@ const ProductDetails = () => {
     FetchProductDetails(id);
     // eslint-disable-next-line
   }, [id]);
+
   const HandleAdditemCart = () => {
-    AddItemCart(id);
-    navigate("/cart");
+    if (isUser()) {
+      AddItemCart(id);
+      navigate("/cart");
+    } else {
+      navigate("/signin");
+    }
   };
 
   const handleBuyProduct = () => {
-    navigate(`/Order/${id}`);
+    if (isUser()) {
+      navigate(`/Order/${id}`);
+    } else {
+      navigate("/signin");
+    }
   };
   return (
     <>

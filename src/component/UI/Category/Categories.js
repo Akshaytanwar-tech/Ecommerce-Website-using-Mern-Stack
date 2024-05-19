@@ -12,8 +12,8 @@ const Categories = (props) => {
         {props.header}
       </div>
 
-      <div className="container mt-4">
-        <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div className="container">
+        <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
           {props.data.map((element) => {
             return (
               <CategoryCard

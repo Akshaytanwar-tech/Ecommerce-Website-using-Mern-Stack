@@ -88,7 +88,7 @@ const BestSeller = () => {
             data-bs-target="#productCarousel"
             data-bs-slide="prev"
           >
-            <i class="fa-solid fa-left-long"></i>
+            <i className="fa-solid fa-left-long"></i>
             <span className="visually-hidden">Previous</span>
           </button>
           <button
@@ -97,7 +97,7 @@ const BestSeller = () => {
             data-bs-target="#productCarousel"
             data-bs-slide="next"
           >
-            <i class="fa-solid fa-right-long"></i>
+            <i className="fa-solid fa-right-long"></i>
             <span className="visually-hidden">Next</span>
           </button>
         </div>

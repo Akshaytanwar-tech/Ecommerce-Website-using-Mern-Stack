@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import EcomContext from "../../../context/EcomContext";
 import Alert from "../Alert";
 
-const Signin = () => {
+const Signin = ({ mes }) => {
   const context = useContext(EcomContext);
   const navigate = useNavigate();
   const { SignIn } = context;
@@ -31,7 +31,7 @@ const Signin = () => {
     <>
       {AlertTriggered && <Alert message={AlertTriggered} />}
       <div className="container d-flex justify-content-center">
-        <form className="needs-validation" onSubmit={HandleonSubmit} novalidate>
+        <form className="needs-validation" onSubmit={HandleonSubmit} noValidate>
           <div className="h3 d-flex mt-5 pb-2 justify-content-center">
             Login
           </div>
