@@ -15,7 +15,7 @@ const CategoryCard = (props) => {
           >
             <img src={props.Photo} className="card-img-top" alt="Category 1" />
             <div className="card-body" id="card-body">
-              <h5 className="card-title text-center" id="card-body">
+              <h5 className="card-title text-center p-0" id="card-body">
                 {props.Name}
               </h5>
             </div>

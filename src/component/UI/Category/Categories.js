@@ -13,7 +13,7 @@ const Categories = (props) => {
       </div>
 
       <div className="container p-3">
-        <div className="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
+        <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
           {props.data.map((element) => {
             return (
               <CategoryCard
