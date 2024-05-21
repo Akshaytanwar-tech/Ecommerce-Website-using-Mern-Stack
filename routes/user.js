@@ -7,65 +7,14 @@ var bcrypt = require("bcryptjs");
 const fetchuser = require("../middleware/fetchuser");
 const { body, validationResult } = require("express-validator");
 let success = true;
+const multer = require("multer");
+const signup = require("../controllers/auth/signup");
+const upload = multer({ dest: "uploads/" });
 const cloudinary = require("cloudinary").v2;
 
 // Auth Api-1 for sign up a user
 
-router.post(
-  "/signup",
-  [
-    body("email").isEmail().withMessage("Email must be email"),
-    body("password")
-      .isLength({ min: 5 })
-      .withMessage("Password must be of 5 character"),
-    body("username").not().isEmpty().withMessage("username can not be empty"),
-    body("address").not().isEmpty().withMessage("Address not be empty"),
-    body("mobile")
-      .not()
-      .isEmpty()
-      .withMessage("Mobile number should not be empty"),
-    body("photo").not().isEmpty().withMessage("Photo not be empty"),
-  ],
-  async (req, res) => {
-    const { username, email, password, photo, address, mobile } = req.body;
-    // Checking errors using express validator
-    const error = validationResult(req);
-    if (!error.isEmpty()) {
-      return res.status(400).json({ errors: error.array() });
-    }
-
-    try {
-      let user = await User.findOne({ email: req.body.email });
-      if (user) {
-        success = false;
-        return res.status(400).json({ error: "sorry user is already exists" });
-      }
-      // Creating hash and salt
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(password, salt);
-
-      user = await User.create({
-        username: username,
-        email: email,
-        password: hash,
-        photo: photo,
-        address: address,
-        mobile: mobile,
-      });
-
-      const data = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      // Creating token using jwt token
-      const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
-      success = true;
-      res.json({ token, success });
-    } catch (error) {}
-  }
-);
+router.post("/signup", upload.single("photo"), signup);
 
 // Auth Api-2 for Sign In a user.
 
