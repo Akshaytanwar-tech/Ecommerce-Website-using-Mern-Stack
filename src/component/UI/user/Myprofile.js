@@ -81,8 +81,9 @@ const Myprofile = () => {
             <div className="col-lg-4">
               <div className="card mb-4">
                 <div className="card-body text-center">
+
                   <img
-                    src={UserData.photo ? UserData.photo : ""}
+                    src={UserData.photo}
                     alt="avatar"
                     className="rounded-circle img-fluid"
                     style={{ width: "150px" }}

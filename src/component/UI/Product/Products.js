@@ -25,7 +25,7 @@ const Products = () => {
           <div className="col-md-3">
             <PriceFilter CategoryId={id} />
           </div>
-          <div className="container col-9">
+          <div className="col-9">
             <div className="row row-cols-2 row-cols-lg-4 g-1 g-lg-3">
               {!key
                 ? Product.map((element) => {
