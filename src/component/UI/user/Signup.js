@@ -13,7 +13,7 @@ const Signup = () => {
     Username: "",
     Email: "",
     Password: "",
-    Photo: "",
+    Photo: null,
     Mobile: "",
     Address: "",
   });
@@ -22,24 +22,24 @@ const Signup = () => {
 
   const onChange = (e) => {
     const value =
-      e.target.name === "photo" ? e.target.files[0] : e.target.value;
+      e.target.name === "Photo" ? e.target.files[0] : e.target.value;
     setUser({ ...User, [e.target.name]: value });
   };
   const onSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("username", category.Username);
-    formData.append("email", category.Email);
-    formData.append("password", category.Password);
-    formData.append("photo", category.Photo);
-    formData.append("mobile", category.Mobile);
-    formData.append("address", category.Address);
+    formData.append("username", User.Username);
+    formData.append("email", User.Email);
+    formData.append("password", User.Password);
+    formData.append("photo", User.Photo);
+    formData.append("mobile", User.Mobile);
+    formData.append("address", User.Address);
     const json = await Signup(formData);
     setUser({
       Username: "",
       Email: "",
       Password: "",
-      Photo: "",
+      Photo: null,
       Mobile: "",
       Address: "",
     });
@@ -118,7 +118,7 @@ const Signup = () => {
               </label>
             </div>
             <div className="">
-              <input
+              {/* <input
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput"
@@ -127,6 +127,14 @@ const Signup = () => {
                 onChange={onChange}
                 value={User.Photo}
                 required
+              /> */}
+              <input
+                type="file"
+                name="Photo"
+                className="form-control"
+                id="inputGroupFile01"
+                onChange={onChange}
+                accept="image/*"
               />
               <label htmlFor="formGroupExampleInput" className="form-label">
                 Please enter photo link
