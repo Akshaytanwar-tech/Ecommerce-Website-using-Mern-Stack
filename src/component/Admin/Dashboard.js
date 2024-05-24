@@ -16,10 +16,10 @@ const Dashboard = () => {
     users,
   } = context;
   useEffect(() => {
-    if (!isAdmin()) {
-      <Alert message={"please sign in as admin first"} />;
-      navigate("/signin");
-    }
+    // if (!isAdmin()) {
+    //   <Alert message={"please sign in as admin first"} />;
+    //   navigate("/signin");
+    // }
     FetchCategories();
     FetchallProducts();
     fetchalluser();

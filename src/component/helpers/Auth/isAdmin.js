@@ -1,4 +1,5 @@
 import config from "../../../config";
+let isadmin = false;
 const fetchuser = async () => {
   const response = await fetch(`${config.APIUrl}/api/auth/fetchuser`, {
     method: "GET",
@@ -8,14 +9,16 @@ const fetchuser = async () => {
     },
   });
   const json = await response.json();
-  return json.role;
+  if (json.role === 1) {
+    isadmin = true;
+  }
 };
 const isAdmin = () => {
   if (!localStorage.getItem("token")) {
     return false;
   }
-  const result = fetchuser();
-  if (result === 1) {
+  fetchuser();
+  if (isadmin) {
     return true;
   }
   return false;
