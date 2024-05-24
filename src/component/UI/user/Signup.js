@@ -21,18 +21,20 @@ const Signup = () => {
   const [AlertTriggered, setAlertTriggered] = useState("");
 
   const onChange = (e) => {
-    setUser({ ...User, [e.target.name]: e.target.value });
+    const value =
+      e.target.name === "photo" ? e.target.files[0] : e.target.value;
+    setUser({ ...User, [e.target.name]: value });
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    const json = await Signup(
-      User.Username,
-      User.Email,
-      User.Password,
-      User.Photo,
-      User.Address,
-      User.Mobile
-    );
+    let formData = new FormData();
+    formData.append("username", category.Username);
+    formData.append("email", category.Email);
+    formData.append("password", category.Password);
+    formData.append("photo", category.Photo);
+    formData.append("mobile", category.Mobile);
+    formData.append("address", category.Address);
+    const json = await Signup(formData);
     setUser({
       Username: "",
       Email: "",
