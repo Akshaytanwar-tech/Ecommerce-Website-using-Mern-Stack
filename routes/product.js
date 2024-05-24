@@ -4,74 +4,16 @@ const router = express.Router();
 const Product = require("../models/product");
 const { body, validationResult } = require("express-validator");
 const multer = require("multer");
+const createProduct = require("../controllers/product/createProduct");
+const fetchAllusers = require("../controllers/auth/fetchallusers");
 const upload = multer({ dest: "uploads/" });
 const cloudinary = require("cloudinary").v2;
 
-
 //Api 1:- To create a product with its category.
-router.post(
-  "/Productcreate",
-  [
-    body("quantity")
-      .isInt({ min: 0 })
-      .withMessage("amount is not a number or amount is less than zero"),
-    body("price")
-      .isInt({ min: 0 })
-      .withMessage("amount is not a number or amount is less than zero"),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    try {
-      const {
-        Brand_Name,
-        photo,
-        price,
-        Product_Name,
-        Product_Name_Details,
-        Description,
-        quantity,
-        CategoryID,
-        tags,
-        ProductHighlight,
-        specifications,
-        Description_spec,
-        isBest,
-      } = req.body;
-
-      let product = await Product.create({
-        Brand_Name: Brand_Name,
-        Product_Name: Product_Name,
-        Product_Name_Details: Product_Name_Details,
-        Description: Description,
-        photo: photo,
-        price: price,
-        quantity: quantity,
-        category: CategoryID,
-        tags: tags,
-        ProductHighlight: ProductHighlight,
-        specifications: specifications,
-        Description_spec: Description_spec,
-        isBest: isBest,
-      });
-      res.json(`${product.Product_Name} has been created`);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
+router.post("/Productcreate", createProduct);
 
 // Api- 2:- To fetch all the Products to find the number of products on the website.
-router.get("/Fetchallproduct", async (req, res) => {
-  try {
-    let product = await Product.find();
-    res.json(product);
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.get("/Fetchallproduct", fetchAllusers);
 
 // Api- 3:- To Fetch the details of a particular products using its id.
 router.post("/Fetchproductdetail/:id", async (req, res) => {

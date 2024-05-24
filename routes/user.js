@@ -2,13 +2,15 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
-var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const fetchuser = require("../middleware/fetchuser");
-const { body, validationResult } = require("express-validator");
 let success = true;
 const multer = require("multer");
 const signup = require("../controllers/auth/signup");
+const signin = require("../controllers/auth/signin");
+const fetchAllusers = require("../controllers/auth/fetchallusers");
+const VerifyDetails = require("../controllers/auth/verifydetails");
+const SetNewPass = require("../controllers/auth/SetNewPass");
 const upload = multer({ dest: "uploads/" });
 const cloudinary = require("cloudinary").v2;
 
@@ -18,53 +20,7 @@ router.post("/signup", upload.single("photo"), signup);
 
 // Auth Api-2 for Sign In a user.
 
-router.post(
-  "/signin",
-  [
-    body("email")
-      .isEmail()
-      .not()
-      .isEmpty()
-      .withMessage("Email should not be empty"),
-    body("password")
-      .not()
-      .isEmpty()
-      .withMessage("Password should not be empty"),
-  ],
-  async (req, res) => {
-    const { email, password } = req.body;
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    try {
-      //Check wheather the email already exists or not
-      let user = await User.findOne({ email });
-      if (!user) {
-        success = false;
-        return res.status(400).json({ error: "sorry user not  exists" });
-      }
-      // Using Bcrypt compare the password given by the user and saved password hash
-      let passwordCompare = await bcrypt.compare(password, user.password);
-      if (!passwordCompare) {
-        success = false;
-        return res.status(400).json({ error: "Wrong password" });
-      }
-
-      const data = {
-        user: {
-          id: user.id,
-        },
-      };
-      const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
-      success = true;
-      res.json({ token, success });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
+router.post("/signin", signin);
 
 // Api-3:- for fetch the data of a particular user.
 
@@ -80,75 +36,15 @@ router.get("/fetchuser", fetchuser, async (req, res) => {
 
 //  API 4:- To find total number of user
 
-router.get("/alluser", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.get("/alluser", fetchAllusers);
 
 //  API 5:- To Forgot Password
 
-router.post("/VerifydetailsForgotPassword", async (req, res) => {
-  try {
-    const { username, email, mobile } = req.body;
-
-    const user = await User.findOne({ email: email });
-    if (!user) {
-      success = false;
-      return res
-        .status(400)
-        .json({ success, error: "sorry user does not found" });
-    }
-    if (user.username !== username) {
-      success = false;
-      return res
-        .status(400)
-        .json({ success, error: "sorry username not matched" });
-    }
-    if (user.email !== email) {
-      success = false;
-      return res
-        .status(400)
-        .json({ success, error: "sorry email not matched" });
-    }
-    if (user.mobile !== mobile) {
-      success = false;
-      return res
-        .status(400)
-        .json({ success, error: "sorry mobile number is not matched" });
-    }
-    id = user._id;
-    success = true;
-    res.json({ success, id });
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.post("/VerifydetailsForgotPassword", VerifyDetails);
 
 // API 6:- To set new password.
 
-router.put("/newpassword/:id", async (req, res) => {
-  try {
-    const { newPassword, confirmPassword } = req.body;
-
-    if (newPassword !== confirmPassword) {
-      success = false;
-      return res
-        .status(400)
-        .json({ success, error: "Make sure both the password are same" });
-    }
-    const salt = await bcrypt.genSaltSync(10);
-    const hash = await bcrypt.hashSync(newPassword, salt);
-    await User.findByIdAndUpdate(req.params.id, { password: hash });
-    success = true;
-    res.json({ success });
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.put("/newpassword/:id", SetNewPass);
 
 // API 7:- to Change password.
 
@@ -180,7 +76,6 @@ router.put("/changepassword", fetchuser, async (req, res) => {
     console.log(error);
   }
 });
-module.exports = router;
 
 //Api - 8 :- To Edit the profile section
 
@@ -204,7 +99,7 @@ router.put("/editprofile", fetchuser, async (req, res) => {
     if (mobile) {
       NewUser.mobile = mobile;
     }
-
+    
     user = await User.findByIdAndUpdate(user._id, { $set: NewUser });
     res.json(user);
   } catch (error) {
@@ -220,3 +115,5 @@ router.post("/changeProfile", (req, res) => {
   });
   res.json({ image: imageURL });
 });
+
+module.exports = router;
