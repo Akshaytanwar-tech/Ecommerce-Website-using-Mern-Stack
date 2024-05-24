@@ -21,7 +21,7 @@ const signup = async (req, res) => {
 
     //Saving photo to the cloudnary
     const result = await cloudinary.uploader.upload(req.file.path);
-    console.log(result.secure_url)
+   
     // Saving data to the database.
     user = await User.create({
       username: username,
