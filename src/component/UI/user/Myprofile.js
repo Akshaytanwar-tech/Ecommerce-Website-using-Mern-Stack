@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import EcomContext from "../../../context/EcomContext";
+import changeProfilepic from "../../../Api/User/changeProfilepic";
 
 const Myprofile = () => {
   const context = useContext(EcomContext);
@@ -25,6 +26,7 @@ const Myprofile = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+
   // Navigate to change password page
   const HandleChangePassword = () => {
     navigate("changepassword");
@@ -54,6 +56,15 @@ const Myprofile = () => {
     }
   };
 
+  // function to change the profile photo of the user.
+  const handleChangePhoto = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      let formData = new FormData();
+      formData.append("photo", file);
+      changeProfilepic(formData);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -81,7 +92,6 @@ const Myprofile = () => {
             <div className="col-lg-4">
               <div className="card mb-4">
                 <div className="card-body text-center">
-
                   <img
                     src={UserData.photo}
                     alt="avatar"
@@ -92,7 +102,25 @@ const Myprofile = () => {
                     className="pt-2 text-primary"
                     style={{ cursor: "pointer" }}
                   >
-                    <u>Change Picture?</u>
+                    <div className="mb-3">
+                      <label
+                        htmlFor="formFile"
+                        className="form-label"
+                        style={{ cursor: "pointer" }}
+                      >
+                        Change Picture?
+                      </label>
+                      <input
+                        className="form-control"
+                        type="file"
+                        id="formFile"
+                        onChange={handleChangePhoto}
+                        style={{
+                          visibility: "hidden",
+                          display: "none",
+                        }}
+                      />
+                    </div>
                   </div>
                   <h5 className="my-3">{UserData.username}</h5>
                   <p className="text-muted mb-4">{UserData.address}</p>

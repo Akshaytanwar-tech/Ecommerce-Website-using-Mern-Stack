@@ -17,6 +17,7 @@ import changeProfile from "../Api/User/changeProfile";
 import ManageOrders from "../Api/Admin/ManageOrders";
 import ConfirmOrder from "../Api/Admin/ConfirmOrder";
 import SetDeliverytime from "../Api/Admin/SetDeliverytime";
+import changeProfilepic from "../Api/User/changeProfilepic";
 
 const Ecomstate = (props) => {
   const [Category, setCategory] = useState([]);
@@ -326,6 +327,7 @@ const Ecomstate = (props) => {
           ManageOrders,
           ConfirmOrder,
           SetDeliverytime,
+          changeProfilepic,
           BestProducts,
           myOrders,
           users,
