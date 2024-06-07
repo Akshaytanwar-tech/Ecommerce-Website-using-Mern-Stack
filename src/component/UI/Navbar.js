@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EcomContext from "../../context/EcomContext";
+import SearchBar from "./searchbar/Searchbar";
 
 const Navbar = () => {
   const Context = useContext(EcomContext);
@@ -94,7 +95,7 @@ const Navbar = () => {
                 </li>
               </ul>
 
-              <form className="d-flex mx-auto">
+              {/* <form className="d-flex mx-auto">
                 <input
                   className="form-control me-2"
                   type="search"
@@ -111,7 +112,8 @@ const Navbar = () => {
                 >
                   <i className="fas fa-search"></i>
                 </button>
-              </form>
+              </form> */}
+              <SearchBar />
 
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 {UserData.role === 1 ? (

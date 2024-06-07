@@ -9,6 +9,7 @@ import EcomContext from "../../context/EcomContext";
 import Navbar from "./Navbar";
 import BestSeller from "./Product/BestSeller/BestSeller";
 
+
 const Home = () => {
   const Context = useContext(EcomContext);
   const { Category, FetchCategories } = Context;
@@ -21,6 +22,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
+     
       <div className="bg-light">
         <Advertisementpic pic={pic} pic1={pic1} pic2={pic2} />
         <Categories header={"Shop by Categories"} data={Category} />
