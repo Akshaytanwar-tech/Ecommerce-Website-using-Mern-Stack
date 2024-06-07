@@ -6,6 +6,7 @@ const { body, validationResult } = require("express-validator");
 const multer = require("multer");
 const createProduct = require("../controllers/product/createProduct");
 const fetchAllusers = require("../controllers/auth/fetchallusers");
+const fetchallproducts = require("../controllers/product/fetchallproduct");
 const upload = multer({ dest: "uploads/" });
 const cloudinary = require("cloudinary").v2;
 
@@ -13,7 +14,7 @@ const cloudinary = require("cloudinary").v2;
 router.post("/Productcreate", createProduct);
 
 // Api- 2:- To fetch all the Products to find the number of products on the website.
-router.get("/Fetchallproduct", fetchAllusers);
+router.get("/Fetchallproduct", fetchallproducts);
 
 // Api- 3:- To Fetch the details of a particular products using its id.
 router.post("/Fetchproductdetail/:id", async (req, res) => {

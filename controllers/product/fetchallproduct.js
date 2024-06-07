@@ -1,3 +1,4 @@
+const Product = require("../../models/product");
 const fetchallproducts = async (req, res) => {
   try {
     let product = await Product.find();
