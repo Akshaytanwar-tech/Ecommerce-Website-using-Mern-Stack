@@ -87,8 +87,8 @@ router.post("/api/create-checkout-session", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: "http://localhost:3000/Ordersuccess",
-      cancel_url: "http://localhost:3000/Ordercancel",
+      success_url: "https://digishop-akshay-tanwars-projects.vercel.app/Ordersuccess",
+      cancel_url: "https://digishop-akshay-tanwars-projects.vercel.app/Ordercancel",
     });
     console.log(`name = ${name}, price=${price}`);
     res.json({ id: session.id });
