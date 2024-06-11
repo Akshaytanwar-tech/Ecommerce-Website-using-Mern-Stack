@@ -1,29 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import EcomContext from "../../context/EcomContext";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Order from "../checkout/Order";
+
 const Cart = () => {
   const navigate = useNavigate();
   const context = useContext(EcomContext);
   const { FetchCartitem, Cart, RemoveItemCart, HandleQty } = context;
   let totalprice = 0;
 
+  // state to handle the throttling for remove item button.
+  const [removeButActive, setRemoveButActive] = useState(false);
+
   useEffect(() => {
     FetchCartitem();
     // eslint-disable-next-line
   }, [HandleQty, Cart]);
 
+  // ----------------------------------  function to implement throttling --------------------------------------------
+
+  function throttling(callback, time, state) {
+    state(true);
+    setTimeout(() => {
+      callback();
+    }, time);
+  }
+
+  // To handle the checkout button for the cart
   const handlePlaceOrder = (price) => {
+    if (Cart.length == 0) {
+      return;
+    }
     <Order totalprice={price} />;
     navigate(`/Order/CartitemBuy`);
   };
 
+  // to handle the quantity increase for cart items
   const HandleIncreaseQty = (id, quantity) => {
     //to handle increase quantity
     HandleQty(id, quantity);
   };
+
+  // to handle the quantity decrease for the cart items
   const HandleDecreaseQty = (id, quantity) => {
     //to handle decrease quantity
     if (quantity > 0) {
@@ -31,6 +50,19 @@ const Cart = () => {
     } else {
       return;
     }
+  };
+
+  // to handle the remove items from the cart
+  const RemoveCartItem = (id) => {
+    RemoveItemCart(id);
+    // implementing throttling to improve performance
+    throttling(
+      () => {
+        setRemoveButActive(false);
+      },
+      2000,
+      setRemoveButActive
+    );
   };
   return (
     <>
@@ -91,9 +123,10 @@ const Cart = () => {
                               <button
                                 type="button"
                                 onClick={() => {
-                                  RemoveItemCart(e._id);
+                                  RemoveCartItem(e._id);
                                 }}
                                 className="btn btn-primary"
+                                disabled={removeButActive}
                               >
                                 Remove item
                               </button>

@@ -13,7 +13,7 @@ const CategoryCard = (props) => {
             onMouseOver={MouseOver}
             onMouseOut={MouseOut}
           >
-            <img src={props.Photo} className="card-img-top" alt="Category 1" />
+            <img src={props.Photo} className="card-img-top" alt="Category 1" loading="lazy"/>
             <div className="card-body" id="card-body">
               <h5 className="card-title text-center p-0" id="card-body">
                 {props.Name}

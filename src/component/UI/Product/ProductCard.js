@@ -11,6 +11,7 @@ const ProductCard = (props) => {
               src={props.product.photo}
               className="card-img-top"
               alt="Product"
+              loading="lazy"
             />
           </Link>
           <div className="card-body">

@@ -1,3 +1,4 @@
+//---------------------------------- Setting all the routes here --------------------------------------------
 import "./App.css";
 import React from "react";
 import Home from "./component/UI/Home";
@@ -26,6 +27,7 @@ import Success from "./component/checkout/StripePayment/Success";
 import Cancel from "./component/checkout/StripePayment/Cancel";
 import Homepage from "./component/Seller/Homepage";
 import ManageOrder from "./component/Admin/ManageOrder";
+
 function App() {
   return (
     <>

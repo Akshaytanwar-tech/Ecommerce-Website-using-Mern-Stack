@@ -4,23 +4,39 @@ import akshay from "../Pictures/akshay.jpg";
 const About = () => {
   return (
     <>
-      <div className="h1 my-3 text-primary text-center container">
-        This Is About Page
-      </div>
-      <div className="container h4 text-success my-4 mx-4">
-        This is a Ecommerce app and This application is helpful to save your
-        notes and read anytime after save.This app is made by Akshay tanwar.
-      </div>
-      <div className="h1 container text-primary mx-4 my-2">ABOUT ME:-</div>
-      <div className="container d-flex mx-4 my-4">
-        <div className="border border-primary mx-4">
-          <img src={akshay} alt="..." />
+      <section
+        class="text-center"
+        style={{ backgroundColor: "#f8f9fa", padding: "60px 0" }}
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="display-4">About Us</h1>
+              <p class="mt-4" style={{ fontSize: "1.1rem", lineHeight: "1.8" }}>
+                Welcome to our e-commerce store! We are dedicated to bringing
+                you the best products at the best prices. Our mission is to make
+                your shopping experience as enjoyable and seamless as possible.
+                We believe in quality, affordability, and exceptional customer
+                service.
+              </p>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-lg-4 mx-auto">
+              <img
+                src={akshay}
+                alt="Your Name"
+                class="img-fluid rounded-circle"
+                style={{ maxWidth: "200px", margin: "20px 0" }}
+              />
+              <h2 class="mt-3">Akshay tanwar</h2>
+              <p style={{ fontSize: "1.1rem", lineHeight: "1.8" }}>
+                Founder & CEO
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="container h4 text-success border border-primary px-5 py-5">
-          Hii I am Akshay Tanwar and I am doing MCA from Sir Chotu ram institute of Eng and technology, meerut. I want to become a software developer after
-          completing my graduation.
-        </div>
-      </div>
+      </section>
     </>
   );
 };

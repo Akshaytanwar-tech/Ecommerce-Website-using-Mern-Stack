@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import "./SearchBar.css"; // Ensure this file is created and imported
+import "./SearchBar.css";
 import { useNavigate } from "react-router-dom";
 import EcomContext from "../../../context/EcomContext";
 
@@ -9,38 +9,73 @@ const SearchBar = () => {
   const context = useContext(EcomContext);
   const { FetchallProducts, AllProduct } = context;
 
+  // hook to handle the input box.
   const [input, setInput] = useState("");
+
+  // hook to handle the filteration of suggestions.
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+
+  // hook to handle the suggestions.
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  // state to handle the throthlling in search button.
+  const [searchButtonactive, setsearchButtonactive] = useState(false);
+
+  //------------------------------------- Implement of throtling -------------------------------------------------
+  function throttling(callback, time, state) {
+    state(true);
+    setTimeout(() => {
+      callback();
+    }, time);
+  }
+  // Implementation of debouncing to save function call
+  const myDebounce = (callback, time) => {
+    let timer;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    // setting the timer using settimeout.
+    timer = setTimeout(() => {
+      callback();
+    }, time);
+  };
+
+  // handle the changes of the input.
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInput(value);
 
     if (value) {
-      const filtered = AllProduct.map((e) => {
-        return e.Product_Name;
-      }).filter((item) => item.toLowerCase().includes(value.toLowerCase()));
-      setFilteredSuggestions(filtered);
-      setShowSuggestions(true);
+      // calling debounce function to implement debouncing.
+      myDebounce(() => {
+        // mapping the products name for suggestion and filtering them.
+        const filtered = AllProduct.map((e) => {
+          return e.Product_Name;
+        }).filter((item) => item.toLowerCase().includes(value.toLowerCase()));
+        setFilteredSuggestions(filtered);
+        setShowSuggestions(true);
+      }, 1000);
     } else {
       setFilteredSuggestions([]);
       setShowSuggestions(false);
     }
   };
 
+  // handle the click on the suggestions.
   const handleSuggestionClick = (suggestion) => {
     setInput(suggestion);
     setFilteredSuggestions([]);
     setShowSuggestions(false);
   };
 
+  // handle if the user click outside.
   const handleClickOutside = (e) => {
     if (!e.target.closest(".suggestion-container")) {
       setShowSuggestions(false);
     }
   };
 
+  // use effect hook to handle the search suggestion and outside click.
   useEffect(() => {
     FetchallProducts();
     document.addEventListener("click", handleClickOutside);
@@ -49,10 +84,24 @@ const SearchBar = () => {
     };
   }, []);
 
+  // handle the search click.
   const HandleSearchClick = (e) => {
     e.preventDefault();
+    if (!input) {
+      return;
+    }
+    // implementing throtling
+    throttling(
+      () => {
+        setsearchButtonactive(false);
+      },
+      2000,
+      setsearchButtonactive
+    );
+    
     navigate(`/ProductSearch/${input}`);
     setInput("");
+
   };
   return (
     <form
@@ -73,6 +122,7 @@ const SearchBar = () => {
         type="button"
         style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
         onClick={HandleSearchClick}
+        disabled={searchButtonactive}
       >
         Search
       </button>
