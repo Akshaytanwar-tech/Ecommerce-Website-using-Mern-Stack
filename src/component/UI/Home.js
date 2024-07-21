@@ -35,7 +35,15 @@ const Home = () => {
         </div>
       ) : (
         <div className="container d-flex justify-content-center py-5 my-5">
-          <ReactLoading color={"black"} type={"spinningBubbles"} height={"100px"} width={"100px"}/>
+          <div>
+            <ReactLoading
+              color={"black"}
+              type={"spinningBubbles"}
+              height={"100px"}
+              width={"100px"}
+            />
+            <div className="py-3 h5">Please Wait...</div>
+          </div>
         </div>
       )}
       <Footar />
