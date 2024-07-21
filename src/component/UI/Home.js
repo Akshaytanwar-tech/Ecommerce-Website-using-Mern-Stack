@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Advertisementpic from "./Advertisementpic";
 import pic from "../Pictures/pic.jpg";
 import pic1 from "../Pictures/pic1.jpg";
@@ -8,26 +8,36 @@ import Footar from "./Footar";
 import EcomContext from "../../context/EcomContext";
 import Navbar from "./Navbar";
 import BestSeller from "./Product/BestSeller/BestSeller";
-
+import ReactLoading from "react-loading";
 
 const Home = () => {
   const Context = useContext(EcomContext);
   const { Category, FetchCategories } = Context;
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
-    FetchCategories();
+    setloading(true);
+    FetchCategories().then(() => {
+      setloading(false);
+    });
     // eslint-disable-next-line
   }, []);
 
   return (
     <>
       <Navbar />
-     
-      <div className="bg-light">
-        <Advertisementpic pic={pic} pic1={pic1} pic2={pic2} />
-        <Categories header={"Shop by Categories"} data={Category} />
-        <BestSeller />
-      </div>
+
+      {!loading ? (
+        <div className="bg-light">
+          <Advertisementpic pic={pic} pic1={pic1} pic2={pic2} />
+          <Categories header={"Shop by Categories"} data={Category} />
+          <BestSeller />
+        </div>
+      ) : (
+        <div className="container d-flex justify-content-center py-5 my-5">
+          <ReactLoading color={"black"} type={"bars"} />
+        </div>
+      )}
       <Footar />
     </>
   );
